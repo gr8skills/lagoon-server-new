@@ -15,20 +15,6 @@
 
 
 @section('content')
-<<<<<<< HEAD
-    <div class="row" id="aboutPageList">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title text-capitalize">News and updates list</h3>
-                        <a href="{{route('news-create')}}" class="btn btn-info btn-sm">
-                            <i class="fas fa-plus mr-1"></i>Add news
-                        </a>
-                    </div>
-                </div>
-
-=======
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -38,19 +24,14 @@
                         <a class="btn btn-sm btn-info" href="{{route('news-create')}}">Add News</a>
                     </div>
                 </div>
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>S/N</th>
                             <th>Title</th>
-<<<<<<< HEAD
                             <th>Added on</th>
                             <th>Added by</th>
-=======
-                            <th>Link</th>
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -66,7 +47,6 @@
                                 <tr>
                                     <td>{{ $count }}</td>
                                     <td>{{ ucwords($n->title) }}</td>
-<<<<<<< HEAD
                                     <td>{{$n->created_at->toFormattedDateString()}}</td>
                                     <td>School Admin</td>
                                     <td class="text-right">
@@ -81,17 +61,6 @@
                                            class="btn btn-sm btn-danger deleteNewsButton">
                                             <i class="far fa-trash-alt mr-1"></i>Delete
                                         </button>
-=======
-                                    <td>
-                                        <a href="{{config('app.front_url')}}/news/{{$n->slug}}"
-                                           target="_blank">{{$n->title}}</a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="{{route('news-edit', $n->slug)}}" class="btn btn-sm btn-info">
-                                            <i class="far fa-edit mr-1"></i>Edit</a>
-                                        <a href="{{route('news-delete', $n->slug)}}" class="btn btn-sm btn-danger">
-                                            <i class="far fa-trash-alt mr-1"></i>Delete</a>
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
                                     </td>
                                 </tr>
                             @endforeach
@@ -102,7 +71,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
     <div class="alert-container" id="alertDeleteNotFound">
         <div class="alert alert-danger alert-dismissible">
@@ -119,9 +87,7 @@
             Unknown error occurred. Please try again.
         </div>
     </div>
-    @include('includes.modals.delete-modal');
-=======
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
+    @include('includes.modals.delete-modal')
 @stop
 
 @section('page-plugin')
@@ -146,7 +112,6 @@
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-<<<<<<< HEAD
 
         $('.deleteNewsButton').each(function () {
             var btn = $(this);
@@ -179,7 +144,5 @@
                 });
             });
         });
-=======
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
     </script>
 @endsection
