@@ -18,11 +18,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/home-page', [\App\Http\Controllers\PageController::class, 'homepage'])->name('home-page');
         Route::get('/facilities', [\App\Http\Controllers\PageController::class, 'facilities'])->name('facilities');
 
-
         Route::get('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'editPage'])->name('page-edit');
         Route::post('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'updatePage']);
         Route::delete('/delete/{slug}', [\App\Http\Controllers\PageController::class, 'deletePage'])->name('page-delete');
     });
+
     Route::get('/news/{slug}/edit', [\App\Http\Controllers\NewsController::class, 'edit'])->name('news-edit');
     Route::post('/news/{slug}/edit', [\App\Http\Controllers\NewsController::class, 'update']);
     Route::get('/news/{slug}/delete', [\App\Http\Controllers\NewsController::class, 'destroy'])->name('news-delete');
@@ -39,4 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sponsors/{id}/delete', [\App\Http\Controllers\SiteSettingController::class, 'deleteSponsor'])->name('sponsors-delete');
     Route::post('/sponsors/update', [\App\Http\Controllers\SiteSettingController::class, 'updateSponsor'])->name('sponsors-update');
     Route::get('/sponsors/toggle-display', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplaySponsor'])->name('sponsors-toggle-display');
+    Route::get('/create-slide', [\App\Http\Controllers\SlideImageController::class, 'create'])->name('slide-create');
+    Route::post('/store-slide', [\App\Http\Controllers\SlideImageController::class, 'store']);
+    Route::delete('/delete-slide/{id}', [\App\Http\Controllers\SlideImageController::class, 'destroy'])->name('slide-delete');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\SlideImage;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -40,7 +41,11 @@ class PageController extends Controller
     // Student Life
     public function homepage()
     {
-        return view('pages.home-page');
+        $slideImages = SlideImage::all();
+
+        return view('pages.home-page')->with([
+            'slideImages' => $slideImages
+        ]);
     }
 
     // Media
@@ -94,7 +99,7 @@ class PageController extends Controller
 
         $page->fill($data);
         $page->save();
-        
+
         $redirectPath = str_replace(' ', '-', $page->category->name);
         return redirect('/pages/' . $redirectPath)->with(['message' => 'Page updated successfully', 'type' => 'success']);
     }

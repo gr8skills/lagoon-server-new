@@ -36,6 +36,7 @@ class NewsController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::of($request->get('title'))->slug('-');
+        $data['ref_id'] = News::generateRefId();
         if ($request->hasFile('thumb')) {
             $data['thumb'] = $request->file('thumb')->store('', 'images');
         }

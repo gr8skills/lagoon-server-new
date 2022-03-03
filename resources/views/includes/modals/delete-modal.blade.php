@@ -17,7 +17,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times mr-1"></i>Close</button>
-                <a href="#" class="btn btn-danger" id="modalDeleteBtn"><i class="fas fa-check mr-1"></i>Ok</a>
+                <button type="button" class="btn btn-danger" id="modalDeleteBtn"><i class="fas fa-check mr-1"></i>Ok</button>
             </div>
         </div>
         <!-- /.modal-content -->

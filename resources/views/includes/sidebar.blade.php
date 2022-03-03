@@ -32,7 +32,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('home-page')}}" class="nav-link {{ $route === 'home-page' ? 'active' : '' }}">
+                            <a href="{{route('home-page')}}" class="nav-link {{ $route === 'home-page' || $route === 'slide-create' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Home Page</p>
                             </a>
@@ -81,47 +81,54 @@
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             News
+                            <span class="right badge badge-sm badge-secondary ml-2">45%</span>
                         </p>
                     </a>
                 </li>
-{{--                <li class="nav-item">--}}
-{{--                    <a href="{{ route('article') }}"--}}
-{{--                       class="nav-link {{ $route === 'article' ? 'active' : ''}}">--}}
-{{--                        <i class="nav-icon fas fa-scroll"></i>--}}
-{{--                        <p>Articles</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('uploads') }}"
-                       class="nav-link {{ $route === 'uploads' ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-file-upload"></i>
-                        <p>Uploads</p>
+                <li class="nav-item">
+                    <a href="javascript:void(0)"
+                       class="nav-link">
+                        <i class="fas fa-users nav-icon"></i>
+                        <p>
+                            Managment Staff
+                            <span class="right badge badge-sm badge-secondary ml-2">Inactive</span>
+                        </p>
                     </a>
-                </li> --}}
-{{--                <li class="nav-item">--}}
-{{--                    <a href="#" class="nav-link">--}}
-{{--                        <i class="nav-icon fas fa-copy"></i>--}}
-{{--                        <p>--}}
-{{--                            User Management--}}
-{{--                            <i class="fas fa-angle-left right"></i>--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-treeview">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>User List</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)"
+                       class="nav-link">
+                        {{-- <i class=" fas fa-newspaper"></i> --}}
+                        <i class="fas fa-upload nav-icon"></i>
+                        <p>
+                            Uploads
+                            <span class="right badge badge-secondary">Inactive</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)"
+                       class="nav-link">
+                        {{-- <i class=" fas fa-newspaper"></i> --}}
+                        <i class="fas fa-building nav-icon"></i>
+                        <p>
+                            Sponsors
+                            <span class="right badge badge-secondary">Inactive</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)"
+                       class="nav-link">
+                        {{-- <i class=" fas fa-newspaper"></i> --}}
+                        <i class="fas fa-cog nav-icon"></i>
+                        <p>
+                            Settings
+                            <span class="right badge badge-secondary">Inactive</span>
+                        </p>
+                    </a>
+                </li>
 
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Roles</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

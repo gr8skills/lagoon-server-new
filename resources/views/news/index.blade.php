@@ -50,11 +50,11 @@
                                     <td>{{$n->created_at->toFormattedDateString()}}</td>
                                     <td>School Admin</td>
                                     <td class="text-right">
-                                        <a href="{{getenv('LIVE_URL')}}about/school-news/{{$n->slug}}"
+                                        <a href="{{config('app.front_url')}}/media/news-events"
                                            class="btn btn-sm btn-info" target="_blank">
                                             <i class="far fa-eye mr-1"></i>Preview
                                         </a>
-                                        <a href="{{ route('news-edit', $n->ref_id) }}" class="btn btn-sm btn-info">
+                                        <a href="{{ route('news-edit', $n->slug) }}" class="btn btn-sm btn-info">
                                             <i class="far fa-edit mr-1"></i>Edit
                                         </a>
                                         <button type="button" data-news="{{$n->ref_id}}"

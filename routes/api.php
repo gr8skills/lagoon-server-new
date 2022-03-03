@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/about')->group(function () {
@@ -46,3 +47,5 @@ Route::get('/news/{slug}', [App\Http\Controllers\Api\NewsController::class, 'sho
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/site-settings', [\App\Http\Controllers\Api\SiteSettingController::class, 'index']);
 Route::get('/sponsors', [\App\Http\Controllers\Api\SiteSettingController::class, 'sponsors']);
+
+Route::get('/slide-images', [\App\Http\Controllers\Api\SlideImageController::class, 'index']);

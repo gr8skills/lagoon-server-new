@@ -11,14 +11,14 @@
 @section('page-styles')
 @stop
 
-@section('content-header', 'Student Life')
+@section('content-header', 'Delete')
 
 @section('content')
-    <div class="row" id="studentLifePageList">
-        <div class="col-12">
+    <div class="row" id="">
+        <div class="col-12 col-sm-6 offset-sm-3 col-md-4 offset-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Student Life pages</h3>
+                    <h3 class="card-title">Delete model</h3>
                 </div>
 
                 <div class="card-body">
@@ -27,11 +27,7 @@
                         <tr>
                             <th>S/N</th>
                             <th>Title</th>
-<<<<<<< HEAD
                             <th>Preview Link</th>
-=======
-                            <th>Link</th>
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -48,13 +44,8 @@
                                     <td>{{ $count }}</td>
                                     <td>{{ ucwords($page->title) }}</td>
                                     <td>
-<<<<<<< HEAD
                                         <a href="{{ getenv('LIVE_URL') }}{{ $page->path }}"
                                            target="_blank">{{getenv('LIVE_URL')}}{{ $page->path }}</a>
-=======
-                                        <a href="{{ config('app.front_url') }}/studentLife/{{ $page->path }}"
-                                           target="_blank">{{ config('app.front_url') }}/studentLife/{{ $page->path }}</a>
->>>>>>> 05865883bc4cf7dd32d9bf0ae924679a11ca64fa
                                     </td>
                                     <td class="text-right">
                                         <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 1) disabled @endif">
@@ -73,26 +64,7 @@
 @stop
 
 @section('page-plugin')
-    <!-- DataTables  & Plugins -->
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/jszip/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 @stop
 
 @section('page-scripts')
-    <script>
-        $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    </script>
 @endsection

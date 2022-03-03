@@ -101,7 +101,7 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('logo.png') }}" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('preload-img.png') }}" alt="" height="60" width="60">
         </div>
 
         @include('includes.navbar')
@@ -206,7 +206,7 @@
     <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
-    <script src="{{ asset('js/common.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/common.js') }}"></script>
 
     <script>
         //jQuery AJAX Setup
