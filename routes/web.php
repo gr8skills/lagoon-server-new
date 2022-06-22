@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/news', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
     Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index'])->name('article');
     Route::get('/site-setting', [\App\Http\Controllers\SiteSettingController::class, 'index'])->name('site-setting');
-    Route::post('/site-setting/update-name', [\App\Http\Controllers\SiteSettingController::class, 'updateSiteName'])->name('site-setting-update-name');
+    Route::post('/site-setting/update-name', [\App\Http\Controllers\SiteSettingController::class, 'updateSiteSetting'])->name('site-setting-update-name');
     Route::post('/site-setting/update-logo', [\App\Http\Controllers\SiteSettingController::class, 'updateSiteLogo'])->name('site-setting-update-logo');
     Route::get('/sponsors/create', [\App\Http\Controllers\SiteSettingController::class, 'createSponsor'])->name('sponsors-create');
     Route::post('/sponsors/store', [\App\Http\Controllers\SiteSettingController::class, 'storeSponsor'])->name('sponsors-store');
@@ -42,4 +42,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-slide', [\App\Http\Controllers\SlideImageController::class, 'create'])->name('slide-create');
     Route::post('/store-slide', [\App\Http\Controllers\SlideImageController::class, 'store']);
     Route::delete('/delete-slide/{id}', [\App\Http\Controllers\SlideImageController::class, 'destroy'])->name('slide-delete');
+
+    //useful links
+    Route::get('/useful-link/create', [\App\Http\Controllers\SiteSettingController::class, 'createULink'])->name('useful-link-create');
+    Route::post('/useful-link/store', [\App\Http\Controllers\SiteSettingController::class, 'storeULink'])->name('useful-link-store');
+    Route::get('/useful-link/edit/{id}', [\App\Http\Controllers\SiteSettingController::class, 'editULink'])->name('useful-link-edit');
+    Route::get('/useful-link/{id}/delete', [\App\Http\Controllers\SiteSettingController::class, 'deleteULink'])->name('useful-link-delete');
+    Route::post('/useful-link/update', [\App\Http\Controllers\SiteSettingController::class, 'updateULink'])->name('useful-link-update');
+    Route::get('/useful-link/toggle-display/{id}', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplayULink'])->name('useful-link-toggle-display');
 });

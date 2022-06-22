@@ -15,15 +15,15 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image:url({{url('images/background-image.png')}}); background-repeat: no-repeat; background-size: cover">
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="#" class="h1"><b>Admin</b></a>
+            <a href="#" class="h1"><b>Administrator</b></a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Sign in to admin dashboard</p>
+            <p class="login-box-msg">Sign in to Lagoon School Admin Dashboard</p>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf

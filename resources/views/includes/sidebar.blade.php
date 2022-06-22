@@ -24,7 +24,7 @@
                 <li class="nav-item menu-open">
                     <a href="" class="nav-link {{$route === 'about' || $route === 'academics' || $route === 'admission'
                         || $route === 'media' || $route === 'home-page' || $route === 'facilities' ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-file"></i>
+                        <i class="nav-icon fas fa-print"></i>
                         <p>
                             Pages
                             <i class="right fas fa-angle-left"></i>
@@ -81,10 +81,11 @@
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             News
-                            <span class="right badge badge-sm badge-secondary ml-2">45%</span>
+                            <span class="right badge badge-sm badge-secondary ml-2">& articles...</span>
                         </p>
                     </a>
                 </li>
+                {{--
                 <li class="nav-item">
                     <a href="javascript:void(0)"
                        class="nav-link">
@@ -95,6 +96,7 @@
                         </p>
                     </a>
                 </li>
+                --}}
                 <li class="nav-item">
                     <a href="javascript:void(0)"
                        class="nav-link">
@@ -118,13 +120,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)"
+                    <a href="{{route('site-setting')}}"
                        class="nav-link">
-                        {{-- <i class=" fas fa-newspaper"></i> --}}
                         <i class="fas fa-cog nav-icon"></i>
                         <p>
-                            Settings
-                            <span class="right badge badge-secondary">Inactive</span>
+                            Site Settings
                         </p>
                     </a>
                 </li>
