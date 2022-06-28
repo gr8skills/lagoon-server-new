@@ -14,7 +14,6 @@ class SiteSettingController extends Controller
         $siteSettings = SiteSetting::firstOrCreate([]);
         $sponsors = Sponsor::all();
         $links = UsefulLinks::all();
-
         return view('site-setting.index')
             ->with([
                 'setting' => $siteSettings,
@@ -100,6 +99,7 @@ class SiteSettingController extends Controller
 //                : null
         ]);
 
+
         return redirect()->route('site-setting');
     }
 
@@ -149,10 +149,16 @@ class SiteSettingController extends Controller
 
     public function updateSiteSetting(Request $request)
     {
+        $autoplay = 0;
+       if(isset($request['auto_play']) && !is_null($request->get('auto_play'))){
+           $autoplay = 1;
+       };
         if (!!$request->get('name') || !!$request->get('secondary_phone') || !!$request->get('primary_phone')
-        || !!$request->get('apply') || !!$request->get('visit_us') || !!$request->get('direction')
+            || !!$request->get('apply') || !!$request->get('visit_us') || !!$request->get('direction')
             || !!$request->get('address') || !!$request->get('facebook') || !!$request->get('twitter')
             || !!$request->get('instagram') || !!$request->get('youtube') || !!$request->get('welcome_pic')
+            || !!$request->get('email') || !!$request->get('portal_url') || !! $request->get('inquire')
+            || !!$request->get('virtual_tour') || !!$request->get('auto_play') || $request->get('splash_screen_image')
         ) {
             $siteSetting = SiteSetting::firstOrNew([]);
             $siteSetting->display_name = $request->get('name');
@@ -165,7 +171,17 @@ class SiteSettingController extends Controller
             $siteSetting->facebook = $request->get('facebook');
             $siteSetting->instagram = $request->get('instagram');
             $siteSetting->youtube = $request->get('youtube');
-            $siteSetting->welcome_pic = $request->get('welcome_pic');
+            $siteSetting->email = $request->get('email');
+            $siteSetting->portal_url = $request->get('portal_url');
+            $siteSetting->inquire = $request->get('inquire');
+            $siteSetting->virtual_tour = $request->get('virtual_tour');
+            $siteSetting->autoplay = $autoplay;
+            if ($request->hasFile('welcome_pic')) {
+                $siteSetting->welcome_pic = $request->file('welcome_pic')->store('', 'images');
+            }
+            if ($request->hasFile('splash_screen_image')) {
+                $siteSetting->splash_screen_image = $request->file('splash_screen_image')->store('', 'images');
+            }
             $siteSetting->save();
         }
 

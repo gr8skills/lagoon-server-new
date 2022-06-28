@@ -49,3 +49,9 @@ Route::get('/site-settings', [\App\Http\Controllers\Api\SiteSettingController::c
 Route::get('/sponsors', [\App\Http\Controllers\Api\SiteSettingController::class, 'sponsors']);
 
 Route::get('/slide-images', [\App\Http\Controllers\Api\SlideImageController::class, 'index']);
+
+Route::get('/menu-submenu', [\App\Http\Controllers\Api\SiteSettingController::class, 'menus']);
+Route::get('/useful-links', [\App\Http\Controllers\Api\SiteSettingController::class, 'usefulLinks']);
+Route::get('/splash-photo', [\App\Http\Controllers\Api\SiteSettingController::class, 'splashPhoto']);
+Route::get('/landing-page', [\App\Http\Controllers\Api\SiteSettingController::class, 'landingData']);
+Route::get('/news-events', [\App\Http\Controllers\Api\SiteSettingController::class, 'newsArticles']);

@@ -49,7 +49,6 @@
 @stop
 
 @section('content-header', 'Site setting')
-
 @section('content')
     <div class="card">
         <div class="card-body">
@@ -92,18 +91,18 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="form-group col-md-4">
-                        <label for="name">Email</label>
+                        <label for="email">Email</label>
                         <input
                             id="email"
                             class="form-control"
                             type="text"
-                            name="name"
+                            name="email"
                             value="{{$setting->email ?? ''}}"
                             placeholder="{{$setting->email ?? 'School Email'}}"
                         >
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="name">Portal URL</label>
+                        <label for="portal_url">Portal URL</label>
                         <input
                             id="portal_url"
                             class="form-control"
@@ -114,7 +113,7 @@
                         >
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="name">Inquire (URL)</label>
+                        <label for="inquire">Inquire (URL)</label>
                         <input
                             id="inquire"
                             class="form-control"
@@ -216,6 +215,44 @@
                             name="youtube"
                             value="{{$setting->youtube ?? ''}}"
                             placeholder="{{$setting->youtube ?? 'Youtube (URL)'}}"
+                        >
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="virtual_tour">Virtual Tour (URL)</label>
+                        <input
+                            id="virtual_tour"
+                            class="form-control"
+                            type="text"
+                            name="virtual_tour"
+                            value="{{$setting->virtual_tour ?? ''}}"
+                            placeholder="{{$setting->virtual_tour ?? 'Virtual Tour (URL)'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Auto Play
+                        <input type="checkbox" value="{{$setting->autoplay??''}}" name="auto_play" class="form-control" {{$setting->autoplay==1?'checked':''}}>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="row col-md-12">
+                    <div class="form-group">
+                        <label for="welcome_pic">Splash Screen Image</label><br/>
+                        <input accept="image/*" class="d-none" id="splash_screen_image" type="file" name="splash_screen_image">
+                        <button class="btn btn-sm btn-info" id="splash_screen_imageSelect" type="button">
+                            @if(!!$setting->splash_screen_image) Change @else Select @endif  Splash Screen Image
+                        </button>
+                        <span class="text-info ml-3">Max size: 10MB (Size: 1200*526)</span>
+                    </div>
+                    <br>
+                    <div class="welcome_pic-placeholder py-3" id="splash_screen_image-placeholder">
+                        <img
+                            src="@if(!!$setting->splash_screen_image) /images/{{ $setting->splash_screen_image }} @endif"
+                            alt="Welcome Splash Image"
+                            class="@if(!$setting->splash_screen_image) d-none @endif"
                         >
                     </div>
                 </div>
@@ -379,6 +416,9 @@
         $('#welcome_picSelect').on('click', function () {
             $('#welcome_pic').click()
         });
+        $('#splash_screen_imageSelect').on('click', function () {
+            $('#splash_screen_image').click()
+        });
 
         $('#logo').on('change', function (evt) {
             if (evt.target.files[0]) {
@@ -390,6 +430,13 @@
             if (evt.target.files[0]) {
                 var imgSrc = URL.createObjectURL(evt.target.files[0]);
                 $('#welcome_pic-placeholder').find('img').removeClass('d-none').attr('src', imgSrc);
+            }
+        });
+
+        $('#splash_screen_image').on('change', function (evt) {
+            if (evt.target.files[0]) {
+                var imgSrc = URL.createObjectURL(evt.target.files[0]);
+                $('#splash_screen_image-placeholder').find('img').removeClass('d-none').attr('src', imgSrc);
             }
         });
 
@@ -408,5 +455,6 @@
                 console.log('Network request failed with the following error - ', errMsg);
             })
         });
+
     </script>
 @endsection

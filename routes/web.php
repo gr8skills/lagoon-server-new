@@ -8,7 +8,7 @@ Route::get('/unauthorized', [App\Http\Controllers\HomeController::class, 'unauth
 
 Route::middleware('auth')->group(function () {
 //    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::redirect('/', '/pages/about')->name('home');
+    Route::redirect('/', '/site-setting')->name('home');
 
     Route::prefix('pages')->group(function () {
         Route::get('/about', [\App\Http\Controllers\PageController::class, 'about'])->name('about');
@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admission', [\App\Http\Controllers\PageController::class, 'admission'])->name('admission');
         Route::get('/media', [\App\Http\Controllers\PageController::class, 'media'])->name('media');
         Route::get('/home-page', [\App\Http\Controllers\PageController::class, 'homepage'])->name('home-page');
+        Route::get('/photo-splash', [\App\Http\Controllers\PageController::class, 'photoSplash'])->name('photo-splash');
         Route::get('/facilities', [\App\Http\Controllers\PageController::class, 'facilities'])->name('facilities');
 
         Route::get('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'editPage'])->name('page-edit');
@@ -50,4 +51,38 @@ Route::middleware('auth')->group(function () {
     Route::get('/useful-link/{id}/delete', [\App\Http\Controllers\SiteSettingController::class, 'deleteULink'])->name('useful-link-delete');
     Route::post('/useful-link/update', [\App\Http\Controllers\SiteSettingController::class, 'updateULink'])->name('useful-link-update');
     Route::get('/useful-link/toggle-display/{id}', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplayULink'])->name('useful-link-toggle-display');
+
+    //photo splash
+    Route::get('/create-splash', [\App\Http\Controllers\SlideImageController::class, 'createSplash'])->name('splash-create');
+    Route::post('/store-splash', [\App\Http\Controllers\SlideImageController::class, 'storeSplash']);
+    Route::delete('/delete-splash/{id}', [\App\Http\Controllers\SlideImageController::class, 'destroySplash'])->name('splash-delete');
+
+    //menu and submenu
+    Route::get('/menu-submenu', [\App\Http\Controllers\PageController::class, 'menu'])->name('menu-submenu');
+
+    //Landing Page
+    Route::post('/home-page/update-one', [\App\Http\Controllers\LandingPageController::class, 'updateOne'])->name('home-page-update-one');
+    Route::get('/landing-page/toggle-display/{id}', [\App\Http\Controllers\LandingPageController::class, 'toggleDisplayExploreMore'])->name('landing-explore-more-toggle-display');
+    Route::get('/explore-more/create', [\App\Http\Controllers\LandingPageController::class, 'createExploreMore'])->name('explore-more-create');
+    Route::post('/explore-more/store', [\App\Http\Controllers\LandingPageController::class, 'storeExploreMore'])->name('explore-more-store');
+    Route::get('/explore-more/edit/{id}', [\App\Http\Controllers\LandingPageController::class, 'editExploreMore'])->name('explore-more-edit');
+    Route::get('/explore-more/{id}/delete', [\App\Http\Controllers\LandingPageController::class, 'deleteExploreMore'])->name('explore-more-delete');
+    Route::post('/explore-more/update', [\App\Http\Controllers\LandingPageController::class, 'updateExploreMore'])->name('explore-more-update');
+
+    //news $ article - landing
+    Route::get('/news-article/toggle-display/{id}', [\App\Http\Controllers\LandingPageController::class, 'toggleDisplayNewsArticle'])->name('landing-news-article-toggle-display');
+    Route::get('/news-article/create', [\App\Http\Controllers\LandingPageController::class, 'createNewsArticle'])->name('news-article-create');
+    Route::post('/news-article/store', [\App\Http\Controllers\LandingPageController::class, 'storeNewsArticle'])->name('news-article-store');
+    Route::get('/news-article/edit/{id}', [\App\Http\Controllers\LandingPageController::class, 'editNewsArticle'])->name('news-article-edit');
+    Route::get('/news-article/{id}/delete', [\App\Http\Controllers\LandingPageController::class, 'deleteNewsArticle'])->name('news-article-delete');
+    Route::post('/news-article/update', [\App\Http\Controllers\LandingPageController::class, 'updateNewsArticle'])->name('news-article-update');
+
+    //upcoming events - landing
+    Route::get('/upcoming-event/toggle-display/{id}', [\App\Http\Controllers\LandingPageController::class, 'toggleDisplayNewsArticle'])->name('landing-upcoming-event-toggle-display');
+    Route::get('/upcoming-event/create', [\App\Http\Controllers\LandingPageController::class, 'createUpcomingEvent'])->name('upcoming-event-create');
+    Route::post('/upcoming-event/store', [\App\Http\Controllers\LandingPageController::class, 'storeUpcomingEvent'])->name('upcoming-event-store');
+    Route::get('/upcoming-event/edit/{id}', [\App\Http\Controllers\LandingPageController::class, 'editUpcomingEvent'])->name('upcoming-event-edit');
+    Route::get('/upcoming-event/{id}/delete', [\App\Http\Controllers\LandingPageController::class, 'deleteUpcomingEvent'])->name('upcoming-event-delete');
+    Route::post('/upcoming-event/update', [\App\Http\Controllers\LandingPageController::class, 'updateUpcomingEvent'])->name('upcoming-event-update');
+
 });

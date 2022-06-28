@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventContent;
+use App\Models\EventDate;
+use App\Models\LandingPage;
+use App\Models\MainMenu;
 use App\Models\Page;
 use App\Models\SlideImage;
+use App\Models\SplashPhoto;
+use App\Models\SubMenu;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -38,13 +44,32 @@ class PageController extends Controller
         ]);
     }
 
-    // Student Life
+    // Landing Page
     public function homepage()
     {
         $slideImages = SlideImage::all();
+        $data = LandingPage::with(['explore'])->get();
+        $explore = collect($data)->toArray();
+        $explore = $explore[0]['explore'];
+        $news = EventContent::orderBy('id', 'desc')->get();
+        $event_dates = EventDate::orderBy('id', 'desc')->get();
 
         return view('pages.home-page')->with([
-            'slideImages' => $slideImages
+            'slideImages' => $slideImages,
+            'message' => json_decode($data[0]->message),
+            'mission' => json_decode($data[0]->mission),
+            'explore' => $explore,
+            'news' => $news,
+            'event_dates' => $event_dates,
+        ]);
+    }
+    // Photo Splash
+    public function photoSplash()
+    {
+        $splashImages = SplashPhoto::all();
+
+        return view('pages.photo-splash')->with([
+            'splashImages' => $splashImages
         ]);
     }
 
@@ -112,4 +137,18 @@ class PageController extends Controller
     //        $redirectPath = str_replace(' ', '-', $page->category->name);
     //        return redirect('/pages/' . $redirectPath);
     //    }
+
+
+    // Menu & Submenu
+    public function menu($menu_id=null)
+    {
+        $menus = MainMenu::with(['submenu'])->orderBy('position','asc')->get();
+        $submenus = SubMenu::orderBy('id','asc')->get();
+//        dump($submenus);
+        return view('menu-submenu')->with([
+            'menus' => $menus,
+            'submenus'=>$submenus
+        ]);
+    }
+
 }
