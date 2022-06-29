@@ -55,3 +55,5 @@ Route::get('/useful-links', [\App\Http\Controllers\Api\SiteSettingController::cl
 Route::get('/splash-photo', [\App\Http\Controllers\Api\SiteSettingController::class, 'splashPhoto']);
 Route::get('/landing-page', [\App\Http\Controllers\Api\SiteSettingController::class, 'landingData']);
 Route::get('/news-events', [\App\Http\Controllers\Api\SiteSettingController::class, 'newsArticles']);
+Route::get('/full-calendar', [\App\Http\Controllers\Api\NewsController::class, 'index']);
+Route::get('/testimonials', [\App\Http\Controllers\Api\TestimonialController::class, 'index']);

@@ -6,16 +6,16 @@ namespace App\Http\Controllers\Api;
 use App\Models\EventContent;
 use App\Models\EventDate;
 use App\Models\News;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
-class NewsController extends ApiBaseController
+class TestimonialController extends ApiBaseController
 {
     public function index()
     {
-        $news = EventDate::where(['status'=>1])->orderBy('id', 'desc')
+        $testimonials = Testimonial::query()->orderBy('id', 'desc')
             ->get();
-        $data=['events'=>$news];
-        return $this->showAll(collect($data));
+        return $this->showAll(collect($testimonials));
     }
 
     public function show($slug)

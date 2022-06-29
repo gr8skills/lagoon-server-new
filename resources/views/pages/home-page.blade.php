@@ -227,24 +227,28 @@
                                 @endphp
                                 <tr>
                                     <td>{{$count}}</td>
-                                    <td>{{ ucwords($link->Heading) }}</td>
+                                    <td>{{ ucwords($link->title) }}</td>
                                     <td style="width: 90%">
-                                        <input
-                                            id="Paragraph1"
-                                            class="form-control"
-                                            type="text"
-                                            name="Paragraph1"
-                                            value="{{$link->Paragraph1 ?? ''}}"
-                                            placeholder="{{$link->Paragraph1 ?? 'Text'}}"
-                                        >
-
+{{--                                        <input--}}
+{{--                                            id="Paragraph1"--}}
+{{--                                            class="form-control"--}}
+{{--                                            type="text"--}}
+{{--                                            name="Paragraph1"--}}
+{{--                                            value="{{$link->description ?? ''}}"--}}
+{{--                                            placeholder="{{$link->description ?? 'Text'}}"--}}
+{{--                                        >--}}
+                                        <div class="col-md-12">
+                                            {{$link->description ?? ''}}
+                                        </div>
                                     </td>
-{{--                                    <td class="text-center">--}}
+                                    <td class="text-center">
 
-{{--                                        <a href="{{ route('useful-link-edit',$link->Heading) }}" class="btn btn-sm btn-info">--}}
-{{--                                            <i class="far fa-edit mr-1"></i>Edit</a>--}}
-{{--                                        <a href="{{ route('useful-link-delete', $link->Heading) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>--}}
-{{--                                    </td>--}}
+                                        <a href="{{ route('mission-edit',$link->id) }}" class="btn btn-sm btn-info">
+                                            <i class="far fa-edit mr-1"></i>Edit</a>
+                                        @if($link->id>3)
+                                            <a href="{{ route('mission-delete', $link->id) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif

@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/media', [\App\Http\Controllers\PageController::class, 'media'])->name('media');
         Route::get('/home-page', [\App\Http\Controllers\PageController::class, 'homepage'])->name('home-page');
         Route::get('/photo-splash', [\App\Http\Controllers\PageController::class, 'photoSplash'])->name('photo-splash');
+        Route::get('/testimonials', [\App\Http\Controllers\PageController::class, 'testimonials'])->name('testimonials');
+
         Route::get('/facilities', [\App\Http\Controllers\PageController::class, 'facilities'])->name('facilities');
 
         Route::get('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'editPage'])->name('page-edit');
@@ -52,10 +54,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/useful-link/update', [\App\Http\Controllers\SiteSettingController::class, 'updateULink'])->name('useful-link-update');
     Route::get('/useful-link/toggle-display/{id}', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplayULink'])->name('useful-link-toggle-display');
 
+ //Missions and Visions
+    Route::get('/mission/edit/{id}', [\App\Http\Controllers\SiteSettingController::class, 'editMission'])->name('mission-edit');
+    Route::get('/mission/{id}/delete', [\App\Http\Controllers\SiteSettingController::class, 'deleteULink'])->name('mission-delete');
+    Route::post('/mission/update', [\App\Http\Controllers\SiteSettingController::class, 'updateMission'])->name('mission-update');
+    Route::get('/mission/toggle-display/{id}', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplayULink'])->name('mission-toggle-display');
+
     //photo splash
     Route::get('/create-splash', [\App\Http\Controllers\SlideImageController::class, 'createSplash'])->name('splash-create');
     Route::post('/store-splash', [\App\Http\Controllers\SlideImageController::class, 'storeSplash']);
     Route::delete('/delete-splash/{id}', [\App\Http\Controllers\SlideImageController::class, 'destroySplash'])->name('splash-delete');
+
+    //Testimonials
+    Route::get('/create-testimonial', [\App\Http\Controllers\TestimonialController::class, 'createTestimonial'])->name('testimonial-create');
+    Route::post('/store-testimonial', [\App\Http\Controllers\TestimonialController::class, 'storeTestimonial']);
+    Route::post('/testimonial/update-one', [\App\Http\Controllers\TestimonialController::class, 'updateOne'])->name('testimonial-update');
 
     //menu and submenu
     Route::get('/menu-submenu', [\App\Http\Controllers\PageController::class, 'menu'])->name('menu-submenu');

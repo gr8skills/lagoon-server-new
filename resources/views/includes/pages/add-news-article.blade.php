@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="date">Date</label>
-                    <input type="text" name="date" id="date" class="form-control" required>
+                    <input type="date" name="date" id="date" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="ceremony">Ceremony</label>

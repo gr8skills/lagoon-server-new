@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mission;
 use App\Models\SiteSetting;
 use App\Models\Sponsor;
 use App\Models\UsefulLinks;
@@ -131,6 +132,40 @@ class SiteSettingController extends Controller
     public function deleteULink($id)
     {
         $link = UsefulLinks::findOrFail($id);
+        $link->delete();
+
+        return redirect()->route('site-setting');
+    }
+
+
+    public function editMission($id)
+    {
+        $link = Mission::query()->findOrFail($id);
+//        $link = UsefulLinks::where(['slug'=>$slug])->first();
+        return view('site-setting.edit-mission')->with([
+            'page' => $link
+        ]);
+    }
+
+    public function updateMission(Request $request)
+    {
+        $id = $request->page_id;
+        $link = Mission::query()->find($id);
+        request()->request->remove('page_id');
+        $data = [];
+        foreach ($request->all() as $key => $val) {
+            if (!!$val) {
+                $data[$key] = $val;
+            }
+        }
+        $link->fill($data);
+        $link->save();
+        return redirect()->route('home-page');
+    }
+
+    public function deleteMission($id)
+    {
+        $link = Mission::query()->findOrFail($id);
         $link->delete();
 
         return redirect()->route('site-setting');

@@ -109,6 +109,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('testimonials')}}"
+                       class="nav-link {{ $route === 'testimonials' || $route === 'testimonial-create' ? 'active' : '' }}">
+                        <i class="fas fa-image nav-icon"></i>
+                        <p>
+                            Testimonials
+{{--                            <span class="right badge badge-secondary">Media</span>--}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('menu-submenu')}}"
                        class="nav-link {{ $route === 'menu-submenu' ? 'active' : '' }}">
                         <i class="fas fa-building nav-icon"></i>

@@ -6,11 +6,16 @@ use App\Models\EventContent;
 use App\Models\EventDate;
 use App\Models\LandingPage;
 use App\Models\MainMenu;
+use App\Models\Mission;
 use App\Models\Page;
 use App\Models\SlideImage;
 use App\Models\SplashPhoto;
+use App\Models\StudentSlide;
+use App\Models\StudentSlideMessage;
 use App\Models\SubMenu;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use PHPUnit\Util\Test;
 
 class PageController extends Controller
 {
@@ -53,11 +58,12 @@ class PageController extends Controller
         $explore = $explore[0]['explore'];
         $news = EventContent::orderBy('id', 'desc')->get();
         $event_dates = EventDate::orderBy('id', 'desc')->get();
-
+        $mission=Mission::all();
+//        dd($mission);
         return view('pages.home-page')->with([
             'slideImages' => $slideImages,
             'message' => json_decode($data[0]->message),
-            'mission' => json_decode($data[0]->mission),
+            'mission' => $mission,
             'explore' => $explore,
             'news' => $news,
             'event_dates' => $event_dates,
@@ -70,6 +76,13 @@ class PageController extends Controller
 
         return view('pages.photo-splash')->with([
             'splashImages' => $splashImages
+        ]);
+    }
+    public function testimonials()
+    {
+        $testimonials = Testimonial::all();
+        return view('pages.testimonials')->with([
+            'testimonials' => $testimonials,
         ]);
     }
 

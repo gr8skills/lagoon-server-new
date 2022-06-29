@@ -7,10 +7,12 @@ use App\Models\EventContent;
 use App\Models\EventDate;
 use App\Models\LandingPage;
 use App\Models\MainMenu;
+use App\Models\Mission;
 use App\Models\SiteSetting;
 use App\Models\SplashPhoto;
 use App\Models\Sponsor;
 use App\Models\UsefulLinks;
+use Carbon\Carbon;
 
 class SiteSettingController extends Controller
 {
@@ -59,9 +61,10 @@ class SiteSettingController extends Controller
         $data = LandingPage::with(['explore'])->get();
         $explore = collect($data)->toArray();
         $explore = $explore[0]['explore'];
+        $mission=Mission::all();
         $data = [
             'messages'=> json_decode($data[0]->message),
-            'mission'=> json_decode($data[0]->mission),
+            'mission'=> $mission,
             'explore'=> $explore,
         ];
         return response()->json(
@@ -71,8 +74,72 @@ class SiteSettingController extends Controller
 
     public function newsArticles()
     {
-        $news = EventContent::where(['status'=>1])->orderBy('id', 'desc')->limit(2)->get();
-        $events = EventDate::where(['status'=>1])->orderBy('id', 'desc')->limit(3)->get();
+        $news =[];
+        EventContent::where(['status'=>1])->orderBy('id', 'desc')->limit(2)
+            ->get()
+        ->mapToGroups(function ($evntC)use(&$news){
+            try {
+                $dt=Carbon::parse($evntC->date)->format('d/m/Y');
+                $evntC->date=$dt;
+                $news[]=$evntC;
+            }
+            catch (\Exception $exception){
+                $news[]=$evntC;
+            }
+            return [];
+        });
+        $events = [];
+        EventDate::where(['status'=>1])->orderBy('id', 'desc')->limit(3)
+            ->get()
+        ->mapToGroups(function ($evnt)use(&$events){
+            try {
+                $dt=Carbon::parse($evnt->date)->format('M d');
+                $evnt->date=$dt;
+                $events[]=$evnt;
+            }
+            catch (\Exception $exception){
+                $events[]=$evnt;
+            }
+            return [];
+        });
+        $data = [
+            'news'=>$news,
+            'events'=>$events,
+        ];
+        return response()->json(
+            $data
+        );
+    }
+    public function fullCalendar()
+    {
+        $news =[];
+        EventContent::where(['status'=>1])->orderBy('id', 'desc')->limit(2)
+            ->get()
+        ->mapToGroups(function ($evntC)use(&$news){
+            try {
+                $dt=Carbon::parse($evntC->date)->format('d/m/Y');
+                $evntC->date=$dt;
+                $news[]=$evntC;
+            }
+            catch (\Exception $exception){
+                $news[]=$evntC;
+            }
+            return [];
+        });
+        $events = [];
+        EventDate::where(['status'=>1])->orderBy('id', 'desc')->limit(3)
+            ->get()
+        ->mapToGroups(function ($evnt)use(&$events){
+            try {
+                $dt=Carbon::parse($evnt->date)->format('M d');
+                $evnt->date=$dt;
+                $events[]=$evnt;
+            }
+            catch (\Exception $exception){
+                $events[]=$evnt;
+            }
+            return [];
+        });
         $data = [
             'news'=>$news,
             'events'=>$events,

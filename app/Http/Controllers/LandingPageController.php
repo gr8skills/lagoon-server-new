@@ -178,7 +178,7 @@ class LandingPageController extends Controller
 
     public function createUpcomingEvent()
     {
-        return view('includes.pages.add-news-article');
+        return view('includes.pages.add-upcoming-event');
     }
 
     public function storeUpcomingEvent(Request $request)
