@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventContent;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -10,7 +11,8 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::all();
+//        $news = News::all();
+        $news = EventContent::orderBy('position', 'asc')->get();
         return view('news.index')->with([
             'news' => $news
         ]);

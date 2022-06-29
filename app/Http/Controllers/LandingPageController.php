@@ -166,14 +166,14 @@ class LandingPageController extends Controller
         $link->status = $request->status;
 
         $link->save();
-        return redirect()->route('home-page');
+        return redirect()->route('news');
     }
 
     public function deleteNewsArticle($id)
     {
         $explore = EventContent::findOrFail($id);
         $explore->delete();
-        return redirect()->route('home-page');
+        return redirect()->route('news');
     }
 
     public function createUpcomingEvent()

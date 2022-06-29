@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">&nbsp;</h3>
-                        <a class="btn btn-sm btn-info" href="{{route('news-create')}}">Add News</a>
+                        <a class="btn btn-sm btn-info" href="{{route('news-article-create')}}">Add News</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -30,8 +30,10 @@
                         <tr>
                             <th>S/N</th>
                             <th>Title</th>
-                            <th>Added on</th>
-                            <th>Added by</th>
+                            <th>Date</th>
+                            <th>Ceremony</th>
+{{--                            <th>Position</th>--}}
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -40,27 +42,28 @@
                             $count = 0;
                         @endphp
                         @if($news->count() > 0)
-                            @foreach($news as $n)
+                            @foreach($news as $link)
                                 @php
                                     $count++;
                                 @endphp
                                 <tr>
-                                    <td>{{ $count }}</td>
-                                    <td>{{ ucwords($n->title) }}</td>
-                                    <td>{{$n->created_at->toFormattedDateString()}}</td>
-                                    <td>School Admin</td>
-                                    <td class="text-right">
-                                        <a href="{{config('app.front_url')}}/media/news-events"
-                                           class="btn btn-sm btn-info" target="_blank">
-                                            <i class="far fa-eye mr-1"></i>Preview
+                                    <td>{{$count}}</td>
+                                    <td>{{ ucwords($link['header']) }}</td>
+                                    <td>{{ ucwords($link['date']) }}</td>
+                                    <td>{{ ucwords($link['ceremony']) }}</td>
+{{--                                    <td>--}}
+{{--                                        {{$link['position']}}--}}
+{{--                                    </td>--}}
+                                    <td>
+                                        <a href="{{route('landing-news-article-toggle-display',$link['id'])}}" class="btn btn-xs btn-{{$link['status']==1?'success':'danger'}}" title="Click to  {{$link['status']==1?'Deactivate':'Activate'}}">
+                                            {{$link['status']==1?'Active':'Inactive'}}
                                         </a>
-                                        <a href="{{ route('news-edit', $n->slug) }}" class="btn btn-sm btn-info">
-                                            <i class="far fa-edit mr-1"></i>Edit
-                                        </a>
-                                        <button type="button" data-news="{{$n->ref_id}}"
-                                           class="btn btn-sm btn-danger deleteNewsButton">
-                                            <i class="far fa-trash-alt mr-1"></i>Delete
-                                        </button>
+                                    </td>
+                                    <td class="text-center">
+
+                                        <a href="{{ route('news-article-edit',$link['id']) }}" class="btn btn-xs btn-info">
+                                            <i class="far fa-edit mr-1"></i>Edit</a>
+                                        <a href="{{ route('news-article-delete', $link['id']) }}" class="btn btn-xs btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

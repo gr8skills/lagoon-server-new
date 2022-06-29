@@ -19,26 +19,34 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <h3 class="card-title text-capitalize">Add news</h3>
+                <a class="btn btn-danger btn-sm" href="{{route('news')}}">Cancel</a>
+            </div>
+        </div>
         <div class="card-body">
             <form action="{{route('news-article-store')}}" enctype="multipart/form-data" method="post">
                 @csrf
-                <div class="form-group">
-                    <label for="header">Title</label>
-                    <input type="text" name="header" id="header" class="form-control" required>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="header">Title</label>
+                        <input type="text" name="header" id="header" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" name="date" id="date" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="ceremony">Ceremony</label>
-                    <input type="text" name="ceremony" id="ceremony" class="form-control" required>
+                    <label for="summernote">Ceremony</label>
+                    <textarea id="summernote" name="ceremony" required class="editor-height"></textarea>
+
+{{--                    <label for="ceremony">Ceremony</label>--}}
+{{--                    <input type="text" name="ceremony" id="ceremony" class="form-control" required>--}}
                 </div>
                 <div class="row col-md-12">
-{{--                    <div class="form-group col-md-6">--}}
-{{--                        <label for="link">Link</label>--}}
-{{--                        <input type="text" name="link" id="link" class="form-control">--}}
-{{--                    </div>--}}
                     <div class="form-group col-md-6">
                         <label for="description">Status</label>
                         <select name="status" class="form-control" id="status">
@@ -70,6 +78,7 @@
 
 @section('page-scripts')
     <script>
+        $('#summernote').summernote().addClass('editor-height');
         $('#imageSelect').on('click', function () {
             $('#holder').click()
         });

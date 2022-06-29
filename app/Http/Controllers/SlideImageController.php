@@ -71,11 +71,15 @@ class SlideImageController extends Controller
             'image' => ['required']
         ]);
 
+        $maxPosition = SplashPhoto::orderBy('id','desc')->limit(1)->get();
+        $maxPosition = collect($maxPosition)->toArray();
+
         $imagePath = $request->image->store('', 'images');
 
         SplashPhoto::create([
             'title' => $request->get('title'),
             'image_path' => $imagePath,
+            'position' => (int)$maxPosition[0]['position'] + 1,
         ]);
 
         return response()->json([
