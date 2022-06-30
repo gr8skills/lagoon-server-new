@@ -277,6 +277,39 @@
                 </div>
 
 
+                <div class="form-group">
+                    <label for="youtube">Menu Text</label>
+                    <input
+                        id="menu_text"
+                        class="form-control"
+                        type="text"
+                        name="menu_text"
+                        value="{{$setting->menu_text ?? ''}}"
+                        placeholder="{{$setting->menu_text ?? 'Menu Placeholder Text'}}"
+                    >
+                </div>
+                <div class="row col-md-12">
+                    <div class="form-group">
+                        <label for="menu_pic">Menu Splash Image</label><br/>
+                        <input accept="image/*" class="d-none" id="menu_pic" type="file" name="menu_pic">
+                        <button class="btn btn-sm btn-info" id="menu_picSelect" type="button">
+                            @if(!!$setting->menu_pic) Change @else Select @endif Menu Splash Image
+                        </button>
+                        <span class="text-info ml-3">Max size: 10MB</span>
+                    </div>
+                    <br>
+                    <div class="menu_pic-placeholder py-3" id="menu_pic-placeholder">
+                        <img
+                            src="@if(!!$setting->menu_pic) /images/{{ $setting->menu_pic }} @endif"
+                            alt="Menu Splash Image"
+                            class="@if(!$setting->menu_pic) d-none @endif"
+                        >
+                    </div>
+                </div>
+
+
+
+
                 <div>
                     <button class="btn btn-sm btn-success" type="submit" id="saveSetting">Save</button>
                 </div>
@@ -416,6 +449,9 @@
         $('#welcome_picSelect').on('click', function () {
             $('#welcome_pic').click()
         });
+        $('#menu_picSelect').on('click', function () {
+            $('#menu_pic').click()
+        });
         $('#splash_screen_imageSelect').on('click', function () {
             $('#splash_screen_image').click()
         });
@@ -430,6 +466,12 @@
             if (evt.target.files[0]) {
                 var imgSrc = URL.createObjectURL(evt.target.files[0]);
                 $('#welcome_pic-placeholder').find('img').removeClass('d-none').attr('src', imgSrc);
+            }
+        });
+        $('#menu_pic').on('change', function (evt) {
+            if (evt.target.files[0]) {
+                var imgSrc = URL.createObjectURL(evt.target.files[0]);
+                $('#menu_pic-placeholder').find('img').removeClass('d-none').attr('src', imgSrc);
             }
         });
 

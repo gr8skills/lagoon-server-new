@@ -194,6 +194,7 @@ class SiteSettingController extends Controller
             || !!$request->get('instagram') || !!$request->get('youtube') || !!$request->get('welcome_pic')
             || !!$request->get('email') || !!$request->get('portal_url') || !! $request->get('inquire')
             || !!$request->get('virtual_tour') || !!$request->get('auto_play') || $request->get('splash_screen_image')
+            || !!$request->get('menu_pic') || !!$request->get('menu_text')
         ) {
             $siteSetting = SiteSetting::firstOrNew([]);
             $siteSetting->display_name = $request->get('name');
@@ -210,9 +211,13 @@ class SiteSettingController extends Controller
             $siteSetting->portal_url = $request->get('portal_url');
             $siteSetting->inquire = $request->get('inquire');
             $siteSetting->virtual_tour = $request->get('virtual_tour');
+            $siteSetting->menu_text = $request->get('menu_text');
             $siteSetting->autoplay = $autoplay;
             if ($request->hasFile('welcome_pic')) {
                 $siteSetting->welcome_pic = $request->file('welcome_pic')->store('', 'images');
+            }
+            if ($request->hasFile('menu_pic')) {
+                $siteSetting->menu_pic = $request->file('menu_pic')->store('', 'images');
             }
             if ($request->hasFile('splash_screen_image')) {
                 $siteSetting->splash_screen_image = $request->file('splash_screen_image')->store('', 'images');
