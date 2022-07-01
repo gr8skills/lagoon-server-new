@@ -42,7 +42,7 @@ class PageController extends Controller
     // Admission
     public function admission()
     {
-        $pages = Page::where('page_category_id', 3)->with('category')->get();
+        $pages = Page::where('page_category_id', 4)->with('category')->get();
 
         return view('pages.admission')->with([
             'pages' => $pages
@@ -89,7 +89,7 @@ class PageController extends Controller
     // Media
     public function media()
     {
-        $pages = Page::where('page_category_id', 4)->with('category')->get();
+        $pages = Page::where('page_category_id', 5)->with('category')->get();
 
         return view('pages.media')->with([
             'pages' => $pages
@@ -99,7 +99,7 @@ class PageController extends Controller
     // Facilities
     public function facilities()
     {
-        $pages = Page::where('page_category_id', 5)->with('category')->get();
+        $pages = Page::where('page_category_id', 6)->with('category')->get();
 
         return view('pages.parents')->with([
             'pages' => $pages

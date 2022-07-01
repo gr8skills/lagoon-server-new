@@ -63,7 +63,7 @@
                             <a href="{{ route('media') }}"
                                class="nav-link {{ $route === 'media' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Media</p>
+                                <p>Student Life</p>
                             </a>
                         </li>
 
@@ -71,7 +71,7 @@
                             <a href="{{ route('facilities') }}"
                                class="nav-link {{ $route === 'facilities' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Facilities</p>
+                                <p>Parents</p>
                             </a>
                         </li>
                     </ul>

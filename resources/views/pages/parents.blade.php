@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title', 'Student Life')
+@section('page-title', 'Parents')
 
 @section('plugin-styles')
     <link rel="stylesheet" href="{{asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -11,14 +11,14 @@
 @section('page-styles')
 @stop
 
-@section('content-header', 'Student Life')
+@section('content-header', 'Parents')
 
 @section('content')
     <div class="row" id="studentLifePageList">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Media pages</h3>
+                    <h3 class="card-title">Parents pages</h3>
                 </div>
 
                 <div class="card-body">
