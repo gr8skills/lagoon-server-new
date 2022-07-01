@@ -119,6 +119,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('questions-answer')}}"
+                       class="nav-link {{ $route === 'questions-answer' || $route === 'questions-answer-create' ? 'active' : '' }}">
+                        <i class="fas fa-image nav-icon"></i>
+                        <p>
+                            Question & Answers
+{{--                            <span class="right badge badge-secondary">Media</span>--}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('menu-submenu')}}"
                        class="nav-link {{ $route === 'menu-submenu' ? 'active' : '' }}">
                         <i class="fas fa-building nav-icon"></i>

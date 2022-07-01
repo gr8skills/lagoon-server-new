@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/home-page', [\App\Http\Controllers\PageController::class, 'homepage'])->name('home-page');
         Route::get('/photo-splash', [\App\Http\Controllers\PageController::class, 'photoSplash'])->name('photo-splash');
         Route::get('/testimonials', [\App\Http\Controllers\PageController::class, 'testimonials'])->name('testimonials');
+        Route::get('/questions-answer', [\App\Http\Controllers\NewsController::class, 'indexQA'])->name('questions-answer');
 
         Route::get('/facilities', [\App\Http\Controllers\PageController::class, 'facilities'])->name('facilities');
 
@@ -69,6 +70,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-testimonial', [\App\Http\Controllers\TestimonialController::class, 'createTestimonial'])->name('testimonial-create');
     Route::post('/store-testimonial', [\App\Http\Controllers\TestimonialController::class, 'storeTestimonial']);
     Route::post('/testimonial/update-one', [\App\Http\Controllers\TestimonialController::class, 'updateOne'])->name('testimonial-update');
+
+    //Questions & Answers
+    Route::get('/create-questions-answer', [\App\Http\Controllers\NewsController::class, 'createQuestionAnswer'])->name('questions-answer-create');
+    Route::post('/store-questions-answer', [\App\Http\Controllers\NewsController::class, 'storeQA'])->name('questions-answer-store');
+    Route::get('/questions-answer/edit/{id}', [\App\Http\Controllers\NewsController::class, 'editQA'])->name('questions-answer-edit');
+    Route::get('/questions-answer/{id}/delete', [\App\Http\Controllers\NewsController::class, 'deleteQA'])->name('questions-answer-delete');
+    Route::post('/questions-answer/update-one', [\App\Http\Controllers\NewsController::class, 'updateQA'])->name('questions-answer-update');
+    Route::get('/questions-answer/toggle-display/{id}', [\App\Http\Controllers\NewsController::class, 'toggleDisplayQA'])->name('questions-answer-toggle-display');
 
     //menu and submenu
     Route::get('/menu-submenu', [\App\Http\Controllers\PageController::class, 'menu'])->name('menu-submenu');

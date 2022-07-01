@@ -44,8 +44,8 @@
                                     <td>{{ $count }}</td>
                                     <td>{{ ucwords($page->title) }}</td>
                                     <td>
-                                        <a href="{{ getenv('LIVE_URL') }}{{ $page->path }}"
-                                           target="_blank">{{getenv('LIVE_URL')}}{{ $page->path }}</a>
+                                        <a href="{{ substr_replace(config('app.front_url') ,"",-1) }}{{ $page->path }}"
+                                           target="_blank">{{ substr_replace(config('app.front_url') ,"",-1) }}{{ $page->path }}</a>
                                     </td>
                                     <td class="text-right">
                                         <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 1) disabled @endif">

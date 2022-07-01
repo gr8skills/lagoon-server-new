@@ -50,7 +50,7 @@
     </style>
 @stop
 
-@section('content-header', 'Students Slide Images')
+@section('content-header', 'Testimonials')
 
 @section('content')
     <div class="row">

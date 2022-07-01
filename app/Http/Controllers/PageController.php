@@ -110,7 +110,6 @@ class PageController extends Controller
     public function editPage($slug)
     {
         $page = Page::where('slug', $slug)->firstOrFail();
-
         return view('pages.edit-page')->with([
             'page' => $page
         ]);
@@ -119,15 +118,47 @@ class PageController extends Controller
     public function updatePage(Request $request, $slug)
     {
         $page = Page::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['content', 'banner', 'footerImage', 'title']);
-
-        if ($request->banner) {
-            $data['banner'] = $request->banner->store('', 'public');
+        if (isset($page) && !is_null($page->banner)){
+            //todo: delete previous image
+        }
+//        $data = $request->only(['content', 'banner', 'footerImage', 'title']);
+        $data = $request->all();
+//        dd($data, $page);
+        if ($request->hasFile('banner')) {
+            $data['banner'] = $request->file('banner')->store('', 'images');
         }
 
-        if ($request->footerImage) {
-            $data['footer_image'] = $request->footerImage->store('', 'images');
+        if ($request->hasFile('footerImage')) {
+            $data['footer_image'] = $request->file('footerImage')->store('', 'images');
         }
+
+        if ($request->hasFile('other_images_1')) {
+            $data['other_images_1'] = $request->file('other_images_1')->store('', 'images');
+        }
+
+        if ($request->hasFile('other_images_2')) {
+            $data['other_images_2'] = $request->file('other_images_2')->store('', 'images');
+        }
+
+        if ($request->hasFile('other_images_3')) {
+            $data['other_images_3'] = $request->file('other_images_3')->store('', 'images');
+        }
+        if ($request->hasFile('other_images_4')) {
+            $data['other_images_4'] = $request->file('other_images_4')->store('', 'images');
+        }
+        if ($request->hasFile('other_images_5')) {
+            $data['other_images_5'] = $request->file('other_images_5')->store('', 'images');
+        }
+
+
+
+//        if ($request->banner) {
+//            $data['banner'] = $request->banner->store('', 'public');
+//        }
+
+//        if ($request->footerImage) {
+//            $data['footer_image'] = $request->footerImage->store('', 'images');
+//        }
 
         if (!$data['title']) {
             unset($data['title']);

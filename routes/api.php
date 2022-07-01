@@ -4,9 +4,10 @@ use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/about')->group(function () {
-    Route::get('/home', [\App\Http\Controllers\Api\AboutPagesController::class, 'home']);
-    Route::get('/meet-head', [\App\Http\Controllers\Api\AboutPagesController::class, 'meetHead']);
+    Route::get('/welcome-to-the-lagoon-school', [\App\Http\Controllers\Api\AboutPagesController::class, 'welcomeToLagoonSchool']);
+    Route::get('/meet-the-head', [\App\Http\Controllers\Api\AboutPagesController::class, 'meetHead']);
     Route::get('/educational-philosophy', [\App\Http\Controllers\Api\AboutPagesController::class, 'philosophy']);
+    Route::get('/faith', [\App\Http\Controllers\Api\AboutPagesController::class, 'faith']);
     Route::get('/virtual-tour', [\App\Http\Controllers\Api\AboutPagesController::class, 'virtualTour']);
     Route::get('/partnership', [\App\Http\Controllers\Api\AboutPagesController::class, 'partners']);
     Route::get('/contact-us', [\App\Http\Controllers\Api\AboutPagesController::class, 'contactUs']);
@@ -57,3 +58,5 @@ Route::get('/landing-page', [\App\Http\Controllers\Api\SiteSettingController::cl
 Route::get('/news-events', [\App\Http\Controllers\Api\SiteSettingController::class, 'newsArticles']);
 Route::get('/full-calendar', [\App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/testimonials', [\App\Http\Controllers\Api\TestimonialController::class, 'index']);
+Route::get('/parent-accordion', [\App\Http\Controllers\Api\NewsController::class, 'questionAndAnswer']);
+

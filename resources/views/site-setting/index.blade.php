@@ -15,6 +15,10 @@
             width: 250px;
             height: auto;
         }
+        .menu_pic-placeholder img {
+            width: 250px;
+            height: auto;
+        }
         .sponsor {
             position: relative;
             width: 150px;

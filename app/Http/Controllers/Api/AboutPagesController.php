@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class AboutPagesController extends Controller
 {
-    public function home()
+    public function welcomeToLagoonSchool()
     {
-        return $this->getResponse($this->getContent('about-the-lagoon-school'));
+        return $this->getResponse($this->getContent('welcome-to-the-lagoon-school'));
     }
 
     public function meetHead()
@@ -20,12 +20,17 @@ class AboutPagesController extends Controller
 
     public function philosophy()
     {
-        return $this->getResponse($this->getContent('educational-philosophy-model'));
+        return $this->getResponse($this->getContent('educational-phylosophy-and-model'));
+    }
+
+    public function faith()
+    {
+        return $this->getResponse($this->getContent('faith'));
     }
 
     public function virtualTour()
     {
-        return $this->getResponse($this->getContent('news-and-updates'));
+        return $this->getResponse($this->getContent('virtual-tour'));
     }
 
     public function partners()

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\EventContent;
 use App\Models\EventDate;
 use App\Models\News;
+use App\Models\PartnershipWithParentQuestionAnswer;
 use Illuminate\Http\Request;
 
 class NewsController extends ApiBaseController
@@ -34,5 +35,13 @@ class NewsController extends ApiBaseController
         $news = News::orderBy('created_at', 'DESC')->get()->take(5);
         return $this->showAll($news);
 
+    }
+
+    public function questionAndAnswer()
+    {
+        $menu = PartnershipWithParentQuestionAnswer::where(['status'=>1])->orderBy('position', 'asc')->get();
+        return response()->json(
+            $menu, 200
+        );
     }
 }

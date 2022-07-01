@@ -44,11 +44,11 @@
                                     <td>{{ $count }}</td>
                                     <td>{{ ucwords($page->title) }}</td>
                                     <td>
-                                        <a href="{{ config('app.front_url') }}{{ $page->path }}"
-                                           target="_blank">{{ config('app.front_url') }}{{ $page->path }}</a>
+                                        <a href="{{ substr_replace(config('app.front_url') ,"",-1) }}{{ $page->path }}"
+                                           target="_blank">{{ substr_replace(config('app.front_url') ,"",-1) }}{{ $page->path }}</a>
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 1) disabled @endif">
+                                        <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 0) disabled @endif">
                                             <i class="far fa-edit mr-1"></i>Edit</a>
 {{--                                        <a href="{{ route('page-delete', $page->slug) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>--}}
                                     </td>
