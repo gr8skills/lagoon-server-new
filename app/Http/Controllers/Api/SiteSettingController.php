@@ -81,6 +81,13 @@ class SiteSettingController extends Controller
         return $this->getResponse(['note'=>$note,'testimonials'=>$testimonials]);
     }
 
+    public function mentorsIndex()
+    {
+        $testimonials = Testimonial::query()->inRandomOrder()->first(['id','commentor','paragraph']);
+        $images = SplashPhoto::query()->where(['category'=>'mentoring'])->get(['id','title','image_path']);
+        return $this->getResponse(['images'=>$images,'testimonials'=>$testimonials]);
+    }
+
 
     public function landingData()
     {

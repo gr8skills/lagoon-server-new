@@ -55,6 +55,7 @@
                                         <option value="primary">Primary School</option>
                                         <option value="secondary">Secondary School</option>
                                         <option value="mentoring">Mentoring</option>
+                                        <option value="traditions">Traditions</option>
                                     </select>
                                 </div>
 

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use App\Models\EventContent;
 use App\Models\EventDate;
 use App\Models\News;
 use App\Models\PartnershipWithParentQuestionAnswer;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
@@ -79,6 +81,7 @@ class NewsController extends Controller
             'event_dates' => $event_dates
         ]);
     }
+
 
 
     // Q/As
@@ -230,4 +233,57 @@ class NewsController extends Controller
         }
     }
 
+//Clubs
+    public function indexClubs()
+    {
+        $clubs = Club::query()->orderBy('category')->get();
+        return view('pages.clubs')->with([
+            'clubs' => $clubs
+        ]);
+    }
+
+    public function createClub()
+    {
+        return view('pages.create-club');
+    }
+
+    public function storeClub(Request $request)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'category' => ['required']
+        ]);
+        $data = $request->all();
+
+        Club::create($data);
+        return redirect()->route('school-clubs');
+    }
+
+    public function editClub($id)
+    {
+        $link = Club::findOrFail($id);
+        return view('pages.edit-club')->with([
+            'page' => $link
+        ]);
+    }
+
+    public function updateClub(Request $request)
+    {
+        $id = $request->page_id;
+        $link = Club::find($id);
+        request()->request->remove('page_id');
+
+        $link->name = $request->name;
+        $link->category = $request->category;
+
+        $link->save();
+        return redirect()->route('school-clubs');
+    }
+
+    public function deleteClub($id)
+    {
+        $qa = Club::findOrFail($id);
+        $qa->delete();
+        return redirect()->route('school-clubs');
+    }
 }

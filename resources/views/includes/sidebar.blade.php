@@ -59,13 +59,13 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ route('media') }}"
-                               class="nav-link {{ $route === 'media' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Student Life</p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('media') }}"--}}
+{{--                               class="nav-link {{ $route === 'media' ? 'active' : '' }}">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Student Life</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                         <li class="nav-item">
                             <a href="{{ route('facilities') }}"
@@ -135,6 +135,15 @@
                         <i class="fas fa-image nav-icon"></i>
                         <p>
                             School Calendar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('school-clubs')}}"
+                       class="nav-link {{ $route === 'school-clubs' || $route === 'club-create' || $route === 'club-edit' ? 'active' : '' }}">
+                        <i class="fas fa-image nav-icon"></i>
+                        <p>
+                            Clubs
                         </p>
                     </a>
                 </li>

@@ -111,4 +111,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload-calendar', [\App\Http\Controllers\NewsController::class, 'uploadContent'])->name('upload-calendar');
     Route::get('/calendar-event/toggle-display/{id}', [\App\Http\Controllers\LandingPageController::class, 'toggleDisplayCalendar'])->name('calendar-event-toggle-display');
 
+    Route::get('/school-clubs', [\App\Http\Controllers\NewsController::class, 'indexClubs'])->name('school-clubs');
+    Route::get('/create-club', [\App\Http\Controllers\NewsController::class, 'createClub'])->name('club-create');
+    Route::post('/store-club', [\App\Http\Controllers\NewsController::class, 'storeClub'])->name('club-store');
+    Route::get('/club/edit/{id}', [\App\Http\Controllers\NewsController::class, 'editClub'])->name('club-edit');
+    Route::get('/club/{id}/delete', [\App\Http\Controllers\NewsController::class, 'deleteClub'])->name('club-delete');
+    Route::post('/club/update-one', [\App\Http\Controllers\NewsController::class, 'updateClub'])->name('club-update');
+
 });
