@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="summernote">Paragraph</label>
-                                <textarea id="summernote" name="paragraph" class="editor-height" placeholder="{{$message->paragraph ?? 'Paragraph'}}"></textarea>
+                                <textarea style="width: 100%;" id="summernote" name="paragraph" class="editor-height" placeholder="{{$message->paragraph ?? 'Paragraph'}}"></textarea>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="form-group">
@@ -116,11 +116,10 @@
 
 @section('page-scripts')
     <script>
-        var content = "{!! addcslashes($message->paragraph ?? '', '"') !!}";
-        try{$('#summernote').summernote('pasteHTML', content).addClass('editor-height');}
-        catch(Exception){
-
-        }
+        {{--var content = "{!! addcslashes($message->paragraph ?? '', '"') !!}";--}}
+        {{--try{$('#summernote').summernote('pasteHTML', content).addClass('editor-height');}--}}
+        {{--catch(Exception){--}}
+        {{--}--}}
         var request;
         var file = undefined;
 

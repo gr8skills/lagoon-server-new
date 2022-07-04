@@ -36,10 +36,10 @@
                     <input type="text" name="ceremony" id="ceremony" class="form-control" value="{{ $page->ceremony ?? '' }}" required>
                 </div>
                 <div class="row col-md-12">
-                    <div class="form-group col-md-6">
-                        <label for="position">Position</label>
-                        <input type="text" name="position" id="position" class="form-control" value="{{ $page->position ?? '' }}">
-                    </div>
+{{--                    <div class="form-group col-md-6">--}}
+{{--                        <label for="position">Position</label>--}}
+{{--                        <input type="text" name="position" id="position" class="form-control" value="{{ $page->position ?? '' }}">--}}
+{{--                    </div>--}}
                     <div class="form-group col-md-6">
                         <label for="description">Status</label>
                         <select name="status" class="form-control" id="status">

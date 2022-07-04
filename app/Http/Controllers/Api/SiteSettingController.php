@@ -11,6 +11,7 @@ use App\Models\Mission;
 use App\Models\SiteSetting;
 use App\Models\SplashPhoto;
 use App\Models\Sponsor;
+use App\Models\Testimonial;
 use App\Models\UsefulLinks;
 use Carbon\Carbon;
 
@@ -50,11 +51,36 @@ class SiteSettingController extends Controller
 
     public function splashPhoto()
     {
-        $menu = SplashPhoto::orderBy('position', 'asc')->get();
+        $menu = SplashPhoto::query()->where(['category'=>'photo_splash'])->orderBy('position', 'asc')->get();
         return response()->json(
            $menu, 200
         );
     }
+    public function facilityIndex()
+    {
+        $images = SplashPhoto::query()->where(['category'=>'facility'])->get(['id','title','image_path']);
+        $note=$this->getContent('academic-facilities',['id','content','banner']);
+        return $this->getResponse(['note'=>$note,'images'=>$images]);
+    }
+    public function primaryIndex()
+    {
+        $images = SplashPhoto::query()->where(['category'=>'primary'])->get(['id','title','image_path']);
+        $note=$this->getContent('primary-school',['id','content','banner','other_images_1','other_titles_1']);
+        return $this->getResponse(['note'=>$note,'images'=>$images]);
+    }
+    public function secondaryIndex()
+    {
+        $images = SplashPhoto::query()->where(['category'=>'secondary'])->get(['id','title','image_path']);
+        $note=$this->getContent('secondary-school',['id','content','banner','other_images_1','other_images_2','other_images_3','other_images_4','other_titles_1','other_titles_4']);
+        return $this->getResponse(['note'=>$note,'images'=>$images]);
+    }
+    public function coursesIndex()
+    {
+        $testimonials = Testimonial::query()->inRandomOrder()->limit(2)->get(['id','commentor','paragraph']);
+        $note=$this->getContent('courses',['id','content','banner']);
+        return $this->getResponse(['note'=>$note,'testimonials'=>$testimonials]);
+    }
+
 
     public function landingData()
     {

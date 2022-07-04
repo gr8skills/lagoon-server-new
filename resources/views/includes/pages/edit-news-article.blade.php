@@ -36,14 +36,18 @@
                     <input type="date" name="date" id="date" class="form-control" value="{{ $page->date ?? '' }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="receipt">Ceremony</label>
-                    <input type="text" name="ceremony" id="ceremony" class="form-control" value="{{ $page->ceremony ?? '' }}" required>
+                    <label for="receipt">Summary</label>
+                    <textarea name="ceremony" id="ceremony" class="form-control">{{ $page->ceremony ?? '' }}</textarea>
+                </div>
+                <div class="form-group"><br>
+                    <label for="summernote">Full Story </label>
+                    <textarea id="summernote" name="paragraph" required class="editor-height">{{ $page->paragraph ?? '' }}</textarea>
                 </div>
                 <div class="row col-md-12">
-                    <div class="form-group col-md-6">
-                        <label for="position">Position</label>
-                        <input type="text" name="position" id="position" class="form-control" value="{{ $page->position ?? '' }}">
-                    </div>
+{{--                    <div class="form-group col-md-6">--}}
+{{--                        <label for="position">Position</label>--}}
+{{--                        <input type="text" name="position" id="position" class="form-control" value="{{ $page->position ?? '' }}">--}}
+{{--                    </div>--}}
                     <div class="form-group col-md-6">
                         <label for="description">Status</label>
                         <select name="status" class="form-control" id="status">
@@ -82,6 +86,7 @@
 
 @section('page-scripts')
     <script>
+        $('#summernote').summernote().addClass('editor-height');
         $('#imageSelect').on('click', function () {
             $('#holder').click()
         });

@@ -38,10 +38,15 @@
                         <input type="date" name="date" id="date" class="form-control" required>
                     </div>
                 </div>
+                <div class="row col-md-12">
+                        <label for="header">Summary</label>
+                        <textarea rows="7" style="width: 100%" name="ceremony" id="summary" class="form-control col-md-12"></textarea>
 
-                <div class="form-group">
-                    <label for="summernote">Ceremony</label>
-                    <textarea id="summernote" name="ceremony" required class="editor-height"></textarea>
+                </div>
+
+                <div class="form-group"><br>
+                    <label for="summernote">Full Story </label>
+                    <textarea id="summernote" name="paragraph" required class="editor-height"></textarea>
 
 {{--                    <label for="ceremony">Ceremony</label>--}}
 {{--                    <input type="text" name="ceremony" id="ceremony" class="form-control" required>--}}

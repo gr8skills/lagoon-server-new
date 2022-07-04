@@ -128,6 +128,16 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{route('school-calendar')}}"
+                       class="nav-link {{ $route === 'school-calendar' || $route === 'upcoming-event-create' ? 'active' : '' }}">
+                        <i class="fas fa-image nav-icon"></i>
+                        <p>
+                            School Calendar
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{route('menu-submenu')}}"
                        class="nav-link {{ $route === 'menu-submenu' ? 'active' : '' }}">

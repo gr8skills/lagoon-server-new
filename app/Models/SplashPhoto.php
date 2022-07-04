@@ -13,5 +13,6 @@ class SplashPhoto extends Model
         'title',
         'image_path',
         'position',
+        'category',
     ];
 }

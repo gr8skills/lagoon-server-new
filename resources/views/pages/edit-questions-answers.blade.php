@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title')
-    {{ ucwords($page->header ?? '') }}
-@stop
+@section('page-title', 'Add Q/A')
 
 @section('plugin-styles')
 @stop
@@ -16,39 +14,39 @@
     </style>
 @stop
 
-@section('content-header')
-    Edit {{ ucwords($page->header) }}
-@stop
+@section('content-header', 'Add Q/A')
 
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <h3 class="card-title text-capitalize">Edit {{ ucwords($page->header) }}</h3>
+                <a class="btn btn-danger btn-sm" href="{{route('questions-answer')}}">Cancel</a>
+            </div>
+        </div>
         <div class="card-body">
             <form action="{{ route('questions-answer-update') }}" enctype="multipart/form-data" method="post">
                 @csrf
-                <div class="form-group">
-                    <label for="section">Question</label>
-                    <input type="hidden" value="{{$page->id}}" name="page_id">
-                    <input type="text" name="title" id="title" class="form-control" value="{{ $page->title ?? '' }}" required>
-                </div>
                 <div class="form-group col-md-12">
-                    <label for="content">Answer</label>
-                    <textarea id="summernote" name="content" class="editor-height" placeholder="{{$page->content ?? 'Answer'}}"></textarea>
+                    <label for="title">Question</label>
+                    <input type="hidden" value="{{$page->id}}" name="page_id">
+                    <input type="text" name="title" id="title" value="{{ $page->title ?? '' }}" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="summernote">Answer</label>
+                    <textarea id="summernote" placeholder="{{$page->content ?? 'Answer'}}" name="content" required class="editor-height">{{$page->content ?? 'Answer'}}</textarea>
                 </div>
                 <div class="row col-md-12">
                     <div class="form-group col-md-6">
-                        <label for="position">Position</label>
-                        <input type="text" name="position" id="position" class="form-control" value="{{ $page->position ?? '' }}">
-                    </div>
-                    <div class="form-group col-md-6">
                         <label for="description">Status</label>
                         <select name="status" class="form-control" id="status">
-                            <option value="1" @if($page->status == 1) selected @endif>Active</option>
+                            <option value="1"  @if($page->status == 1) selected @endif>Active</option>
                             <option value="0" @if($page->status == 0) selected @endif>Inactive</option>
                         </select>
                     </div>
                 </div>
-
                 <div>
                     <button class="btn btn-sm btn-info" type="submit">Save</button>
                 </div>
@@ -62,6 +60,7 @@
 
 @section('page-scripts')
     <script>
+        $('#summernote').summernote().addClass('editor-height');
         $('#imageSelect').on('click', function () {
             $('#holder').click()
         });
@@ -72,8 +71,5 @@
                 $('#logo-placeholder').removeClass('d-none').find('img').attr('src', imgSrc);
             }
         });
-
-        var content = "{!! addcslashes($page->content ?? '', '"') !!}";
-        $('#summernote').summernote('pasteHTML', content).addClass('editor-height');
     </script>
 @endsection

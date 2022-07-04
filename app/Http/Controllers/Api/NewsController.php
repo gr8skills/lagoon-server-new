@@ -15,7 +15,8 @@ class NewsController extends ApiBaseController
     {
         $news = EventDate::where(['status'=>1])->orderBy('id', 'desc')
             ->get();
-        $data=['events'=>$news];
+        $notes=$this->getContent('academic-calendar',['banner','other_images_1','other_images_2']);
+        $data=['events'=>$news,'notes'=>$notes];
         return $this->showAll(collect($data));
     }
 

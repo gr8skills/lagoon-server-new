@@ -19,6 +19,7 @@ class CreateEventContentsTable extends Migration
             $table->string('header')->nullable();
             $table->string('date')->nullable();
             $table->longText('ceremony')->nullable();
+            $table->longText('paragraph')->nullable();
             $table->integer('position')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

@@ -21,6 +21,8 @@ class CreateMainMenusTable extends Migration
             $table->string('slug')->nullable();
             $table->longText('caption')->nullable();
             $table->string('image')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('position')->nullable();
             $table->string('target')->default('_self');
             $table->integer('status')->default(1);
             $table->timestamps();
@@ -51,6 +53,10 @@ class CreateMainMenusTable extends Migration
                 'title'=>'Portal',
                 'target'=>'_blank',
             ],
+            [
+                'title'=>'Faith',
+                'target'=>'_blank',
+            ],
         ];
 
         MainMenu::insert($data);
@@ -60,6 +66,41 @@ class CreateMainMenusTable extends Migration
             $link->slug = strtolower(str_replace(" ", "", $link->title));
             $link->label = strtoupper($link->title);
             $link->save();
+        }
+
+
+        $menus = MainMenu::all();
+        foreach ($menus as $menu){
+            if ($menu->slug == 'about'){
+                $menu->link = 'about';
+                $menu->position = 1;
+            }
+            if ($menu->slug == 'academics'){
+                $menu->link = 'academics';
+                $menu->position = 2;
+            }
+            if ($menu->slug == 'faith'){
+                $menu->link = 'about/opus-dei';
+                $menu->position = 3;
+            }
+            if ($menu->slug == 'admission'){
+                $menu->link = 'admission';
+                $menu->position = 4;
+            }
+            if ($menu->slug == 'studentlife'){
+                $menu->link = 'student_life';
+                $menu->position = 5;
+            }
+            if ($menu->slug == 'parents'){
+                $menu->link = 'parents';
+                $menu->position = 6;
+            }
+            if ($menu->slug == 'portal'){
+                $menu->link = 'https://lagoon.eschoolng.net';
+                $menu->position = 7;
+                $menu->target = '_blank';
+            }
+            $menu->save();
         }
     }
 

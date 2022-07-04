@@ -48,7 +48,8 @@
                                            target="_blank">{{ substr_replace(config('app.front_url') ,"",-1) }}{{ $page->path }}</a>
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 1) disabled @endif">
+{{--                                        <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info @if($page->completed === 1) disabled @endif">--}}
+                                        <a href="{{ route('page-edit', $page->slug) }}" class="btn btn-sm btn-info">
                                             <i class="far fa-edit mr-1"></i>Edit</a>
                                     </td>
                                 </tr>

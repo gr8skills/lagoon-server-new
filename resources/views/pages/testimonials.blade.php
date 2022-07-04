@@ -66,13 +66,24 @@
                     <div class="d-flex flex-column flex-md-row flex-md-wrap ">
                         @if ($testimonials->count() > 0)
                             @foreach ($testimonials as $slide)
-                                <div class="slide-card mr-sm-3"
-                                     style="background: url({{ asset('/images/' . $slide->image_path) }}) center/cover no-repeat padding-box">
-                                    <button type="button" class="btn btn-danger" id="btn-delete" data-toggle="modal"
-                                            data-target="#deleteModal" data-slide="{{ $slide->id }}">
-                                        Delete
-                                    </button>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="slide-card mr-sm-3"
+                                             style="background: url({{ asset('/images/' . $slide->image_path) }}) center/cover no-repeat padding-box">
+
+                                            <button type="button" class="btn btn-danger" id="btn-delete" data-toggle="modal"
+                                                    data-target="#deleteModal" data-slide="{{ $slide->id }}">Delete</button>
+
+                                        </div>
+                                        <h4 class="label label-info" data-slide="{{ $slide->label }}">
+                                            {{ $slide->label }}
+                                        </h4>
+                                        <div class="text-info float-right btn btn-default" title="{{$slide->paragraph}}">- {{ $slide->commentor }}</div>
+{{--                                        <div class="btn btn-sm btn-info">Edit</div>--}}
+                                    </div>
                                 </div>
+
+
                             @endforeach
                         @else
                             <div class="d-flex justify-content-center w-100">
@@ -117,7 +128,7 @@
                 blockPage();
 
                 request = $.ajax({
-                    url: '/delete-slide/' + slideId,
+                    url: '/delete-testimonial/' + slideId,
                     type: 'DELETE',
                 });
 

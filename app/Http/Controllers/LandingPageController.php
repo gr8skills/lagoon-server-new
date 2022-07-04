@@ -113,6 +113,7 @@ class LandingPageController extends Controller
             'header' => ['required'],
             'date' => ['required'],
             'ceremony' => ['required'],
+            'paragraph' => ['required'],
         ]);
         $last_id = EventContent::orderBy('id','desc')->select('id')->first();
 
@@ -120,6 +121,7 @@ class LandingPageController extends Controller
             'header' => $request->get('header'),
             'date' => $request->get('date'),
             'ceremony' => $request->get('ceremony'),
+            'paragraph' => $request->get('paragraph'),
             'status' => $request->get('status'),
             'position' => (int)$last_id->id + 1,
             'holder' => $request->hasFile('holder')
@@ -139,6 +141,16 @@ class LandingPageController extends Controller
             $news->status = 1;
         $news->save();
         return redirect()->route('home-page');
+    }
+    public function toggleDisplayCalendar($id)
+    {
+        $news = EventDate::findOrFail($id);
+        if ($news->status == 1)
+            $news->status = 0;
+        elseif ($news->status == 0)
+            $news->status = 1;
+        $news->save();
+        return redirect()->route('school-calendar');
     }
 
     public function editNewsArticle($id)
@@ -162,7 +174,7 @@ class LandingPageController extends Controller
         $link->header = $request->header;
         $link->date = $request->date;
         $link->ceremony = $request->ceremony;
-        $link->position = $request->position;
+        $link->paragraph = $request->paragraph;
         $link->status = $request->status;
 
         $link->save();
@@ -193,10 +205,10 @@ class LandingPageController extends Controller
             'date' => $request->get('date'),
             'ceremony' => $request->get('ceremony'),
             'status' => $request->get('status'),
-            'position' => (int)$last_id->id + 1,
+//            'position' => (int)$last_id->id + 1,
         ]);
 
-        return redirect()->route('home-page');
+        return redirect()->route('school-calendar');
     }
 
 
@@ -208,7 +220,7 @@ class LandingPageController extends Controller
         elseif ($event->status == 0)
             $event->status = 1;
         $event->save();
-        return redirect()->route('home-page');
+        return redirect()->route('school-calendar');
     }
 
 
@@ -228,11 +240,11 @@ class LandingPageController extends Controller
 
         $link->date = $request->date;
         $link->ceremony = $request->ceremony;
-        $link->position = $request->position;
+//        $link->position = $request->position;
         $link->status = $request->status;
 
         $link->save();
-        return redirect()->route('home-page');
+        return redirect()->route('school-calendar');
     }
 
 
@@ -240,7 +252,7 @@ class LandingPageController extends Controller
     {
         $event = EventDate::findOrFail($id);
         $event->delete();
-        return redirect()->route('home-page');
+        return redirect()->route('school-calendar');
     }
 
 }

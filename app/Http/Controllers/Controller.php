@@ -12,9 +12,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function getContent($slug)
+    protected function getContent($slug,$plucks=null)
     {
-        return Page::where('slug', $slug)->first() ?? null;
+        return is_null($plucks)? (Page::query()->where('slug', $slug)->first() ?? null):(Page::query()->where('slug', $slug)->first($plucks) ?? null);
     }
 
     protected function getResponse($content, $code = 200)

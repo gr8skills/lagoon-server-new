@@ -15,8 +15,11 @@ class CreateSplashPhotosTable extends Migration
     {
         Schema::create('splash_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->string('image_path');
+            $table->integer('position')->nullable();
+            $table->string('category')->default('photo_splash');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

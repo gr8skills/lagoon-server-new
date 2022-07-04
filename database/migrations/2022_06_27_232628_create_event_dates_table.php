@@ -17,7 +17,7 @@ class CreateEventDatesTable extends Migration
             $table->id();
             $table->string('date')->nullable();
             $table->string('ceremony')->nullable();
-            $table->integer('position')->nullable();
+//            $table->integer('position')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
@@ -26,17 +26,17 @@ class CreateEventDatesTable extends Migration
           [
               'date'=> '27 April',
               'ceremony'=> 'World Book Day',
-              'position'=> 1,
+//              'position'=> 1,
           ],
           [
               'date'=>'05 May',
               'ceremony'=> 'Art Day',
-              'position'=> 2,
+//              'position'=> 2,
           ],
             [
                 'date'=> '27 May',
                 'ceremony'=> 'Children’s Day',
-              'position'=> 3,
+//              'position'=> 3,
             ]
         ];
 

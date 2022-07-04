@@ -14,12 +14,12 @@ class AdmissionPagesController extends Controller
 
     public function tuition()
     {
-        return $this->getResponse($this->getContent('school-tuition-fee'));
+        return $this->getResponse($this->getContent('school-tuition-fees'));
     }
 
     public function scholarship()
     {
-        return $this->getResponse($this->getContent('scholarship'));
+        return $this->getResponse($this->getContent('scholarships'));
     }
 
     public function faqs()

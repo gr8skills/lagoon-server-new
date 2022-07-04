@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SlideImage;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Input\Input;
 
 class TestimonialController extends Controller
@@ -43,6 +45,30 @@ class TestimonialController extends Controller
 //        return redirect()->route('students-slide');
         return redirect()->route('testimonials');
     }
+
+    public function destroy($id)
+    {
+        $testimonial = Testimonial::find($id);
+
+        if (!$testimonial) {
+            return response()->json([
+                'message' => 'Image not found.'
+            ], 404);
+        }
+
+        if(Storage::disk('images')->exists($testimonial->image_path)) {
+            Storage::disk('images')->delete($testimonial->image_path);
+        }
+
+        $testimonial->delete();
+
+//        return redirect('/pages/home-page');
+
+        return response()->json([
+            'message' => 'Image deleted successfully.'
+        ], 200);
+    }
+
 
 
 }

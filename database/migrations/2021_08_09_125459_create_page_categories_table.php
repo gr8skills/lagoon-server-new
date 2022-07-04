@@ -19,7 +19,7 @@ class CreatePageCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        $categoryTexts = ['about', 'academics', 'admission', 'media', 'facilities'];
+        $categoryTexts = ['about', 'academics', 'faith', 'admission', 'student_life','parents'];
 
         foreach ($categoryTexts as $text) {
             \App\Models\PageCategory::create([

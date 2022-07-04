@@ -330,7 +330,7 @@
                             <thead>
                             <tr>
                                 <th>S/N</th>
-                                <th>Ceremony</th>
+                                <th>Event</th>
                                 <th>Date</th>
                                 <th>Position</th>
                                 <th>Status</th>
@@ -354,7 +354,7 @@
                                             {{$link['position']}}
                                         </td>
                                         <td>
-                                            <a href="{{route('landing-upcoming-event-toggle-display',$link['id'])}}" class="btn btn-xs btn-{{$link['status']==1?'success':'danger'}}" title="Click to  {{$link['status']==1?'Deactivate':'Activate'}}">
+                                            <a href="{{route('calendar-event-toggle-display',$link['id'])}}" class="btn btn-xs btn-{{$link['status']==1?'success':'danger'}}" title="Click to  {{$link['status']==1?'Deactivate':'Activate'}}">
                                                 {{$link['status']==1?'Active':'Inactive'}}
                                             </a>
                                         </td>

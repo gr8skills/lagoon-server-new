@@ -22,6 +22,7 @@ class CreateUsefulLinksTable extends Migration
             $table->string('url')->nullable();
             $table->string('target')->default('_blank');
             $table->string('description')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
 

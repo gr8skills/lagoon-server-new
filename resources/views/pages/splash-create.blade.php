@@ -47,6 +47,16 @@
                                 </div>
                             </div>
                             <div class="col-6">
+                                <div class="form-group">
+                                    <label for="description">Category</label>
+                                    <select name="category" class="form-control" id="category">
+                                        <option value="photo_splash" selected>Photo Splash</option>
+                                        <option value="facility">Facility</option>
+                                        <option value="primary">Primary School</option>
+                                        <option value="secondary">Secondary School</option>
+                                        <option value="mentoring">Mentoring</option>
+                                    </select>
+                                </div>
 
                             </div>
                         </div>
@@ -102,7 +112,9 @@
 
             var formData = new FormData();
             var titleInputValue = $('#title').val();
+            var categoryInputValue = $('#category').val();
 
+            formData.append('category', categoryInputValue);
             formData.append('title', titleInputValue);
             formData.append('image', file);
 

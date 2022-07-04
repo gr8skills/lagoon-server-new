@@ -73,11 +73,15 @@ class SlideImageController extends Controller
 
         $maxPosition = SplashPhoto::orderBy('id','desc')->limit(1)->get();
         $maxPosition = collect($maxPosition)->toArray();
+        if(!isset($maxPosition[0]))
+            $maxPosition[0]=['position'=>0];
 
         $imagePath = $request->image->store('', 'images');
+//        dd($request->get('category'));
 
         SplashPhoto::create([
             'title' => $request->get('title'),
+            'category' => $request->get('category'),
             'image_path' => $imagePath,
             'position' => (int)$maxPosition[0]['position'] + 1,
         ]);

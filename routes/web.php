@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-testimonial', [\App\Http\Controllers\TestimonialController::class, 'createTestimonial'])->name('testimonial-create');
     Route::post('/store-testimonial', [\App\Http\Controllers\TestimonialController::class, 'storeTestimonial']);
     Route::post('/testimonial/update-one', [\App\Http\Controllers\TestimonialController::class, 'updateOne'])->name('testimonial-update');
+    Route::delete('/delete-testimonial/{id}', [\App\Http\Controllers\TestimonialController::class, 'destroy'])->name('slide-delete');
 
     //Questions & Answers
     Route::get('/create-questions-answer', [\App\Http\Controllers\NewsController::class, 'createQuestionAnswer'])->name('questions-answer-create');
@@ -106,5 +107,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/upcoming-event/edit/{id}', [\App\Http\Controllers\LandingPageController::class, 'editUpcomingEvent'])->name('upcoming-event-edit');
     Route::get('/upcoming-event/{id}/delete', [\App\Http\Controllers\LandingPageController::class, 'deleteUpcomingEvent'])->name('upcoming-event-delete');
     Route::post('/upcoming-event/update', [\App\Http\Controllers\LandingPageController::class, 'updateUpcomingEvent'])->name('upcoming-event-update');
+    Route::get('/school-calendar', [\App\Http\Controllers\NewsController::class, 'indexCalendar'])->name('school-calendar');
+    Route::post('/upload-calendar', [\App\Http\Controllers\NewsController::class, 'uploadContent'])->name('upload-calendar');
+    Route::get('/calendar-event/toggle-display/{id}', [\App\Http\Controllers\LandingPageController::class, 'toggleDisplayCalendar'])->name('calendar-event-toggle-display');
 
 });

@@ -60,3 +60,8 @@ Route::get('/full-calendar', [\App\Http\Controllers\Api\NewsController::class, '
 Route::get('/testimonials', [\App\Http\Controllers\Api\TestimonialController::class, 'index']);
 Route::get('/parent-accordion', [\App\Http\Controllers\Api\NewsController::class, 'questionAndAnswer']);
 
+Route::get('/facility-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'facilityIndex']);
+Route::get('/primary-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'primaryIndex']);
+Route::get('/secondary-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'secondaryIndex']);
+Route::get('/courses-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'coursesIndex']);
+
