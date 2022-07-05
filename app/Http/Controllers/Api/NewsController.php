@@ -22,7 +22,7 @@ class NewsController extends ApiBaseController
 
     public function show($slug)
     {
-        $news = News::where('slug', $slug)->first();
+        $news =EventContent::query()->where('slug', $slug)->first();
 
         if (!$news) {
             return $this->errorResponse('News not found', 404);
@@ -30,10 +30,17 @@ class NewsController extends ApiBaseController
 
         return $this->showOne($news);
     }
+    public function listRelatedNews($slug)
+    {
+        $news =EventContent::query()
+            ->where('slug','<>', $slug)
+            ->orderBy('updated_at', 'DESC')->get(['id','slug','holder','header','ceremony'])->take(15);
+        return $this->showAll($news);
+    }
 
     public function recentNews()
     {
-        $news = News::orderBy('created_at', 'DESC')->get()->take(5);
+        $news = EventContent::orderBy('created_at', 'DESC')->get()->take(5);
         return $this->showAll($news);
 
     }

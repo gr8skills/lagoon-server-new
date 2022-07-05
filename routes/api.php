@@ -45,6 +45,7 @@ Route::prefix('/parents')->group(function () {
     Route::get('/launch-menu', [\App\Http\Controllers\Api\ParentsPagesController::class, 'launchMenu']);
 });
 Route::get('/news/{slug}', [App\Http\Controllers\Api\NewsController::class, 'show']);
+Route::get('/related-news/{slug}', [App\Http\Controllers\Api\NewsController::class, 'listRelatedNews']);
 Route::get('/news', [App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/site-settings', [\App\Http\Controllers\Api\SiteSettingController::class, 'index']);
 Route::get('/sponsors', [\App\Http\Controllers\Api\SiteSettingController::class, 'sponsors']);
