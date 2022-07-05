@@ -67,4 +67,5 @@ Route::get('/secondary-index', [\App\Http\Controllers\Api\SiteSettingController:
 Route::get('/courses-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'coursesIndex']);
 Route::get('/mentors-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'mentorsIndex']);
 Route::get('/clubs-index', [\App\Http\Controllers\Api\ClubsController::class, 'index']);
+Route::get('/tradition-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'traditionIndex']);
 

@@ -109,7 +109,10 @@
         $('#upload').on('click', function(evt) {
             evt.preventDefault();
 
-            if (!file) return;
+            if (!file){
+                toastAlert('Please select a file.', 'Error', 'error');
+                return;
+            } 
 
             var formData = new FormData();
             var titleInputValue = $('#title').val();

@@ -183,4 +183,12 @@ class SiteSettingController extends Controller
     }
 
 
+    public function traditionIndex()
+    {
+        $images = SplashPhoto::query()->where(['category'=>'traditions'])->get(['id','title','image_path']);
+        $note=$this->getContent('lagoon-traditions',['id','content','banner']);
+        return $this->getResponse(['note'=>$note,'images'=>$images]);
+    }
+
+
 }
