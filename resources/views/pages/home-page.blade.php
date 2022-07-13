@@ -190,7 +190,7 @@
 
                                         <a href="{{ route('explore-more-edit',$link['id']) }}" class="btn btn-sm btn-info">
                                             <i class="far fa-edit mr-1"></i>Edit</a>
-{{--                                        <a href="{{ route('explore-more-delete', $link['id']) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>--}}
+                                        <a href="{{ route('explore-more-delete', $link['id']) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
