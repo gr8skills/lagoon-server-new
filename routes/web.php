@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
 
     //Testimonials
     Route::get('/create-testimonial', [\App\Http\Controllers\TestimonialController::class, 'createTestimonial'])->name('testimonial-create');
+    Route::get('/edit-testimonial', [\App\Http\Controllers\TestimonialController::class, 'editTestimonial'])->name('testimonial-edit');
     Route::post('/store-testimonial', [\App\Http\Controllers\TestimonialController::class, 'storeTestimonial']);
     Route::post('/testimonial/update-one', [\App\Http\Controllers\TestimonialController::class, 'updateOne'])->name('testimonial-update');
     Route::delete('/delete-testimonial/{id}', [\App\Http\Controllers\TestimonialController::class, 'destroy'])->name('slide-delete');

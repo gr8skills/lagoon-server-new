@@ -9,8 +9,6 @@ class SlideImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'image_path',
-    ];
+    protected $guarded = ['id'];
+
 }

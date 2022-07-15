@@ -28,11 +28,25 @@
         <div class="card-body">
             <form action="{{route('club-store')}}" enctype="multipart/form-data" method="post">
                 @csrf
-                    <div class="form-group col-md-12">
+                <div class="row col-md-12">
+                    <div class="form-group col-md-6">
                         <label for="title">Club Name</label>
                         <input type="text" name="name" id="title" class="form-control" required>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="title">Club Link</label>
+                        <input type="text" name="link" id="title" class="form-control">
+                    </div>
+                </div>
+
                 <div class="row col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="description">Link Target (Open in ...)</label>
+                        <select name="target" class="form-control" id="status">
+                            <option value="_blank" >Blank Page</option>
+                            <option value="_self">Same Page</option>
+                        </select>
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="description">Category</label>
                         <select name="category" class="form-control" id="status">

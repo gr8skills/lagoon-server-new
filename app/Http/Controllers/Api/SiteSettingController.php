@@ -51,7 +51,7 @@ class SiteSettingController extends Controller
 
     public function splashPhoto()
     {
-        $menu = SplashPhoto::query()->where(['category'=>'photo_splash'])->orderBy('position', 'asc')->get();
+        $menu = SplashPhoto::query()->where(['category'=>'photo_splash'])->orderBy('id', 'desc')->get();
         return response()->json(
            $menu, 200
         );

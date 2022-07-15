@@ -15,6 +15,11 @@ class TestimonialController extends Controller
         return view('pages.create-testimonial');
     }
 
+    public function editTestimonial()
+    {
+        return view('pages.edit-testimonial');
+    }
+
     public function storeTestimonial(Request $request)
     {
         $request->validate([

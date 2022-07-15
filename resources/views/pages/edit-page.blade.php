@@ -340,6 +340,11 @@
                                                value="{{ $page->other_titles_1 ?? '' }}">
                                     </div>
                                     <label>Primary School Intro Note</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Laying the Groundwork. Strengthening the Foundation" id="title"
+                                               name="other_titles_2"
+                                               value="{{ $page->other_titles_2 ?? '' }}">
+                                    </div>
                                     <textarea id="summernote" name="content" class="editor-height"></textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Baseline Image</label>
