@@ -79,7 +79,7 @@
                                             {{ $slide->label }}
                                         </h4>
                                         <div class="text-info float-right btn btn-default" title="{{$slide->paragraph}}">- {{ $slide->commentor }}</div>
-                                        <div class="btn btn-sm btn-info"><a href="{{ route('testimonial-edit') }}">Edit</a></div>
+                                        <div class="btn btn-sm btn-info"><a href="{{ route('testimonial-edit',$slide->id) }}">Edit</a></div>
                                     </div>
                                 </div>
 

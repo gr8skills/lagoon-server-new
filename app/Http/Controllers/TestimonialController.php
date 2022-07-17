@@ -15,9 +15,11 @@ class TestimonialController extends Controller
         return view('pages.create-testimonial');
     }
 
-    public function editTestimonial()
+    public function editTestimonial($id)
     {
-        return view('pages.edit-testimonial');
+        $testimonial = Testimonial::find($id);
+//        dd($testimonial);
+        return view('pages.edit-testimonial')->with(['message'=>$testimonial]);
     }
 
     public function storeTestimonial(Request $request)
@@ -46,6 +48,8 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::query()->find($data['id']);
         if(is_null($testimonial))
             $testimonial=Testimonial::query()->create($data);
+        try{$data['image_path'] = $request->image->store('', 'images');}
+        catch (\Exception $ex){}
         $testimonial->update($data);
 //        return redirect()->route('students-slide');
         return redirect()->route('testimonials');

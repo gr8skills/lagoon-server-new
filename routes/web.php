@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/useful-link/update', [\App\Http\Controllers\SiteSettingController::class, 'updateULink'])->name('useful-link-update');
     Route::get('/useful-link/toggle-display/{id}', [\App\Http\Controllers\SiteSettingController::class, 'toggleDisplayULink'])->name('useful-link-toggle-display');
 
- //Missions and Visions
+    //Missions and Visions
     Route::get('/mission/edit/{id}', [\App\Http\Controllers\SiteSettingController::class, 'editMission'])->name('mission-edit');
     Route::get('/mission/{id}/delete', [\App\Http\Controllers\SiteSettingController::class, 'deleteULink'])->name('mission-delete');
     Route::post('/mission/update', [\App\Http\Controllers\SiteSettingController::class, 'updateMission'])->name('mission-update');
@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
 
     //Testimonials
     Route::get('/create-testimonial', [\App\Http\Controllers\TestimonialController::class, 'createTestimonial'])->name('testimonial-create');
-    Route::get('/edit-testimonial', [\App\Http\Controllers\TestimonialController::class, 'editTestimonial'])->name('testimonial-edit');
+    Route::get('/edit-testimonial/{id}', [\App\Http\Controllers\TestimonialController::class, 'editTestimonial'])->name('testimonial-edit');
     Route::post('/store-testimonial', [\App\Http\Controllers\TestimonialController::class, 'storeTestimonial']);
     Route::post('/testimonial/update-one', [\App\Http\Controllers\TestimonialController::class, 'updateOne'])->name('testimonial-update');
     Route::delete('/delete-testimonial/{id}', [\App\Http\Controllers\TestimonialController::class, 'destroy'])->name('slide-delete');
