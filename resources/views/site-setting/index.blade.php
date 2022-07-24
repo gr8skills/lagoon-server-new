@@ -223,6 +223,90 @@
                     </div>
                 </div>
                 <div class="row col-md-12">
+                    <h2 class="col-md-12">SCHOOL STATISTICS</h2>
+                    <div class="form-group col-md-3">
+                        <label for="facebook">GRADUATES</label>
+                        <input
+                            id="graduates"
+                            class="form-control"
+                            type="text"
+                            name="statistics_graduates"
+                            value="{{$setting->statistics_graduates ?? '300'}}"
+                            placeholder="{{$setting->statistics_graduates ?? '300'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="twitter">STUDENT MENTOR RATIO</label>
+                        <input
+                            id="ratio"
+                            class="form-control"
+                            type="text"
+                            name="statistics_student_mentor_ratio"
+                            value="{{$setting->statistics_student_mentor_ratio ?? '1:1'}}"
+                            placeholder="{{$setting->statistics_student_mentor_ratio ?? '1:1'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="instagram">Enrolment</label>
+                        <input
+                            id="enrolment"
+                            class="form-control"
+                            type="text"
+                            name="statistics_enrolment"
+                            value="{{$setting->statistics_enrolment ?? '800'}}"
+                            placeholder="{{$setting->statistics_enrolment ?? '800'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="youtube">Average Class Size</label>
+                        <input
+                            id="youtube"
+                            class="form-control"
+                            type="text"
+                            name="statistics_average_class_size"
+                            value="{{$setting->statistics_average_class_size ?? '35'}}"
+                            placeholder="{{$setting->statistics_average_class_size ?? '35'}}"
+                        >
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="form-group col-md-12">
+                        <label for="facebook">ACADEMIC EXCELLENCE</label>
+                        <input
+                            id="graduates"
+                            class="form-control"
+                            type="text"
+                            name="statistics_academic_excellence"
+                            value="{{$setting->statistics_academic_excellence ?? ''}}"
+                            placeholder="{{$setting->statistics_academic_excellence ?? 'Academic excellence description'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="twitter">FAITH</label>
+                        <input
+                            id="ratio"
+                            class="form-control"
+                            type="text"
+                            name="statistics_faith"
+                            value="{{$setting->statistics_faith ?? ''}}"
+                            placeholder="{{$setting->statistics_faith ?? 'Faith description'}}"
+                        >
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="instagram">Parent Partnership</label>
+                        <input
+                            id="enrolment"
+                            class="form-control"
+                            type="text"
+                            name="statistics_parent_partnership"
+                            value="{{$setting->statistics_parent_partnership ?? ''}}"
+                            placeholder="{{$setting->statistics_parent_partnership ?? 'Parent Partnership description'}}"
+                        >
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
                     <div class="form-group col-md-6">
                         <label for="virtual_tour">Virtual Tour (URL)</label>
                         <input

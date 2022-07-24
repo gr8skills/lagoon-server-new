@@ -19,7 +19,11 @@
 @section('content-header')
     Edit {{ ucwords($page->title) }} page
 @stop
-
+<style>
+    textarea{
+       width: 100%
+    }
+</style>
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -67,8 +71,8 @@
                                 <span class="alert-info">You can change the "Why Lagoon" Title to anything you want, here</span>
                             </div>
                             <label for="summernote">A short story of 'Why Lagoon' Goes here</label>
-                            <textarea id="summernote" name="content" class="editor-height"
-                                      placeholder="A Short Story of 'Why Lagoon' goes here"></textarea>
+                            <textarea id="summernote1" name="content" class="editor-height"
+                                      placeholder="A Short Story of 'Why Lagoon' goes here">{{$page->content ?? '' }}</textarea>
 
                             <div class="row form-group">
                                 <div class="col-md-6">
@@ -126,10 +130,9 @@
                                 <input type="file" accept="image/*" class="form-control" id="other_images_2"
                                        name="other_images_2">
                                 <span class="text-info ml-3">Max size: 1MB</span>
-                                <input type="text" style="word-break: break-word !important;" class="form-control"
+                                <textarea type="text" style="word-break: break-word !important;" class="form-control"
                                        id="other_contents_2" name="other_contents_2"
-                                       value="{{ $page->other_contents_2 ?? '' }}"
-                                       placeholder="Nice Description of the image above">
+                                          placeholder="Nice Description of the image above">{{ $page->other_contents_2 ?? '' }}</textarea>
 
                             </div>
                             <div class="banner-placeholder py-3" id="banner-placeholder">
@@ -146,10 +149,9 @@
                                 <input type="file" accept="image/*" class="form-control" id="other_images_3"
                                        name="other_images_3">
                                 <span class="text-info ml-3">Max size: 1MB</span>
-                                <input type="text" style="word-break: break-word !important;" class="form-control"
+                                <textarea type="text" style="word-break: break-word !important;" class="form-control"
                                        id="other_contents_3" name="other_contents_3"
-                                       value="{{ $page->other_contents_3 ?? '' }}"
-                                       placeholder="Nice description of second image">
+                                          placeholder="Nice description of second image">{{ $page->other_contents_3 ?? '' }}</textarea>
                             </div>
                             <div class="banner-placeholder py-3" id="banner-placeholder">
                                 <img
@@ -167,10 +169,10 @@
                                     <input type="file" accept="image/*" class="form-control" id="other_images_4"
                                            name="other_images_4">
                                     <span class="text-info ml-3">Max size: 5MB</span>
-                                    <input type="text" style="word-break: break-word !important;" class="form-control"
+                                    <textarea type="text" style="word-break: break-word !important;" class="form-control"
                                            id="other_contents_4" name="other_contents_4"
-                                           value="{{ $page->other_contents_3 ?? '' }}"
-                                           placeholder="Nice description of the third image">
+
+                                              placeholder="Nice description of the third image">{{ $page->other_contents_4 ?? '' }}</textarea>
                                 </div>
                                 <div class="banner-placeholder py-3" id="banner-placeholder">
                                     <img
@@ -187,7 +189,7 @@
                                                value="{{ $page->other_titles_1 ?? '' }}"
                                                placeholder="WELCOME FROM THE HEAD OF SCHOOL">
                                     </div>
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="editor-height"></textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Image</label>
                                         <input type="file" accept="image/*" class="form-control" id="other_images_1"
@@ -237,14 +239,21 @@
 
                                 @elseif($page->slug == 'educational-phylosophy-and-model' && $page->page_category_id == 1)
                                     <div class="form-group col-md-12">
-                                        <h2>FOSTER VIRTUES OF MIND, HEART AND CHARACTER</h2>
-                                        <textarea style="width: 100%" id="content2" id="summernote2" name="content2"
-                                                  class="editor-height">{{$page->content2 ?? ''}}</textarea>
+
+                                        <h2>PURSUE THE TRUTH</h2>
+                                        <textarea id="summernote1" style="width: 100%" name="other_contents_2" class="editor-height">{{$page->other_contents_2 ?? ''}}</textarea>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <h2>DISCOVER GREATNESS IN ORDINARY LIFE</h2>
-                                        <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                        <textarea style="width: 100%" id="content3" id="summernote3" name="content"
+                                                  class="editor-height summernote">{{$page->content ?? ''}}</textarea>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <h2>FOSTER VIRTUES OF MIND, HEART AND CHARACTER</h2>
+                                        <textarea style="width: 100%" id="summernote2" name="content2"
+                                                  class="editor-height">{{$page->content2 ?? ''}}</textarea>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="other_images_1">Image</label>
                                         <input type="file" accept="image/*" class="form-control" id="other_images_1"
@@ -345,21 +354,20 @@
                                                name="other_titles_2"
                                                value="{{ $page->other_titles_2 ?? '' }}">
                                     </div>
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="editor-height">{{$page->content??''}}</textarea>
                                     <div class="form-group">
-                                        <label for="other_images_1">Baseline Image</label>
-                                        <input type="file" accept="image/*" class="form-control" id="other_images_1"
-                                               name="other_images_1">
-                                        <span class="text-info ml-3">Max size: 1MB</span>
+                                        <label for="other_images_1">Video Link (please post the embed version of the video link)</label>
+                                        <input type="text" class="form-control" id="content2"
+                                               name="content2" value="{{$page->content2??''}}">
                                     </div>
-                                    <div class="banner-placeholder py-3" id="banner-placeholder">
-                                        <img
-                                            src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
-                                            alt="Other Image"
-                                            style="width: 400px"
-                                            class="@if(!$page->other_images_1) d-none @endif"
-                                        >
-                                    </div>
+{{--                                    <div class="banner-placeholder py-3" id="banner-placeholder">--}}
+{{--                                        <img--}}
+{{--                                            src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"--}}
+{{--                                            alt="Other Image"--}}
+{{--                                            style="width: 400px"--}}
+{{--                                            class="@if(!$page->other_images_1) d-none @endif"--}}
+{{--                                        >--}}
+{{--                                    </div>--}}
 
                                 @elseif($page->slug == 'secondary-school' && $page->page_category_id == 2)
                                     <div class="form-group">
@@ -368,21 +376,20 @@
                                                value="{{ $page->other_titles_1 ?? '' }}">
                                     </div>
                                     <label>Primary School Intro Note</label>
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="editor-height">{{$page->content??''}}</textarea>
                                     <div class="form-group">
-                                        <label for="other_images_1">Baseline Image</label>
-                                        <input type="file" accept="image/*" class="form-control" id="other_images_1"
-                                               name="other_images_1">
-                                        <span class="text-info ml-3">Max size: 1MB</span>
+                                        <label for="other_images_1">Video Link (please post the embed version of the video link)</label>
+                                        <input type="text" class="form-control" id="content2"
+                                               name="content2" value="{{$page->content2??''}}">
                                     </div>
-                                    <div class="banner-placeholder py-3" id="banner-placeholder">
-                                        <img
-                                            src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
-                                            alt="Other Image"
-                                            style="width: 400px"
-                                            class="@if(!$page->other_images_1) d-none @endif"
-                                        >
-                                    </div>
+{{--                                    <div class="banner-placeholder py-3" id="banner-placeholder">--}}
+{{--                                        <img--}}
+{{--                                            src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"--}}
+{{--                                            alt="Other Image"--}}
+{{--                                            style="width: 400px"--}}
+{{--                                            class="@if(!$page->other_images_1) d-none @endif"--}}
+{{--                                        >--}}
+{{--                                    </div>--}}
 
                                     <hr>
                                     <h4>3 PORTRAITS OF LAGOON GIRLS (with nice descriptions if need be)</h4>
@@ -613,7 +620,7 @@
         var content = "{!! addcslashes($page->content ?? '', '"') !!}";
         var content_a = "{!! addcslashes($page->other_contents_1 ?? '', '"') !!}";
         {{--var content2 = '{!! addcslashes($page->content2 ?? '', '"') !!}';--}}
-        $('#summernote').summernote('pasteHTML', content).addClass('editor-height');
+        // $('#summernote').summernote('pasteHTML', content).addClass('editor-height');
         // $('#summernote2').summernote('pasteHTML', content2);
         $('#summernote_a').summernote('pasteHTML', content_a).addClass('editor-height');
 
@@ -636,4 +643,6 @@
             $('#footerImage').click();
         });
     </script>
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 @endsection

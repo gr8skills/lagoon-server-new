@@ -10,7 +10,7 @@ class SlideImageController extends Controller
 {
     public function index()
     {
-        $slideImages = SlideImage::all();
+        $slideImages = SlideImage::query()->get('image_path')->pluck(['image_path']);
         return $this->getResponse($slideImages);
     }
 }

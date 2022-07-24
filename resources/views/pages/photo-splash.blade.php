@@ -73,7 +73,9 @@
                                         data-target="#deleteModal" data-slide="{{ $photo->id }}">
                                         Delete
                                     </button>
+                                    <span class="panel text-light text-bold">Category: {{$photo->category}}</span>
                                 </div>
+
                             @endforeach
                         @else
                             <div class="d-flex justify-content-center w-100">

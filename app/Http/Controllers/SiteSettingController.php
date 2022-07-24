@@ -212,6 +212,14 @@ class SiteSettingController extends Controller
             $siteSetting->inquire = $request->get('inquire');
             $siteSetting->virtual_tour = $request->get('virtual_tour');
             $siteSetting->menu_text = $request->get('menu_text');
+            $siteSetting->statistics_graduates = $request->get('statistics_graduates');
+            $siteSetting->statistics_enrolment = $request->get('statistics_enrolment');
+            $siteSetting->statistics_average_class_size = $request->get('statistics_average_class_size');
+            $siteSetting->statistics_student_mentor_ratio = $request->get('statistics_student_mentor_ratio');
+
+            $siteSetting->statistics_academic_excellence = $request->get('statistics_academic_excellence');
+            $siteSetting->statistics_faith = $request->get('statistics_faith');
+            $siteSetting->statistics_parent_partnership = $request->get('statistics_parent_partnership');
             $siteSetting->autoplay = $autoplay;
             if ($request->hasFile('welcome_pic')) {
                 $siteSetting->welcome_pic = $request->file('welcome_pic')->store('', 'images');
