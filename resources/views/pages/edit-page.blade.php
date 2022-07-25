@@ -268,6 +268,28 @@
                                             class="@if(!$page->other_images_1) d-none @endif"
                                         >
                                     </div>
+                                @elseif($page->slug == 'courses' && $page->page_category_id == 2)
+                                    <div class="form-group col-md-12">
+
+                                        <h2>JUNIOR PRIMARY COURSES <span class="text-info">(Description and course list)</span></h2>
+                                        <textarea id="summernote1" style="width: 100%" name="other_contents_1" class="editor-height">{{$page->other_contents_1 ?? ''}}</textarea>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <h2>SENIOR PRIMARY COURSES <span class="text-info">(Description and course list)</span></h2>
+                                        <textarea style="width: 100%" id="content3" id="summernote3" name="other_contents_2"
+                                                  class="editor-height summernote">{{$page->other_contents_2 ?? ''}}</textarea>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+
+                                        <h2>JUNIOR SECONDARY COURSES <span class="text-info">(Description and course list)</span></h2>
+                                        <textarea id="summernote1" style="width: 100%" name="other_contents_3" class="editor-height">{{$page->other_contents_3 ?? ''}}</textarea>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <h2>SENIOR SECONDARY COURSES <span class="text-info">(Description and course list)</span></h2>
+                                        <textarea style="width: 100%" id="content3" id="summernote3" name="other_contents_4"
+                                                  class="editor-height summernote">{{$page->other_contents_4 ?? ''}}</textarea>
+                                    </div>
 
                                 @elseif($page->slug == 'faith' && $page->page_category_id == 1)
                                     <textarea id="summernote" name="content" class="editor-height"></textarea>
@@ -571,6 +593,204 @@
                                                     class="@if(!$page->other_images_3) d-none @endif"
                                                 >
                                             </div>
+
+                                        @elseif(($page->slug == 'service' && $page->page_category_id == 4)||($page->slug == 'uniform' && $page->page_category_id == 6))
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="title"
+                                                       name="other_contents_1"
+                                                       value="{{ $page->other_contents_1 ?? '' }}"
+                                                       placeholder="Service is an integral part of the Lagoon culture. At the heart of Christian leadership is service. Our service program helps girls recognize the beauty of self-gift and the many ways they can step up to be servant- leaders. Each service component at Laggon encourages our girls to serve in ways that are best suited to their gifts and personal circumstance">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="other_images_1">Big Image</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_1"
+                                                       name="other_images_1">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
+                                                    alt="Other Image"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_1) d-none @endif"
+                                                >
+                                            </div>
+
+{{--                                            <textarea id="summernote" name="content"--}}
+{{--                                                      class="editor-height"></textarea>--}}
+
+                                            <div class="form-group">
+                                                <label for="other_images_2">Smaller Image 1</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_2"
+                                                       name="other_images_2">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_2) /images/{{ $page->other_images_2 }} @endif"
+                                                    alt="Other Image 1"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_2) d-none @endif"
+                                                >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="other_images_3">Image 2</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_3"
+                                                       name="other_images_3">
+                                                <span class="text-info ml-3">Max size: 1MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_3) /images/{{ $page->other_images_3 }} @endif"
+                                                    alt="Other Image 2"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_3) d-none @endif"
+                                                >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="other_images_3">Image 3</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_4"
+                                                       name="other_images_4">
+                                                <span class="text-info ml-3">Max size: 1MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_4) /images/{{ $page->other_images_4 }} @endif"
+                                                    alt="Other Image 3"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_4) d-none @endif"
+                                                >
+                                            </div>
+                                        @elseif($page->slug == 'club-activities' && $page->page_category_id == 4)
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="title"
+                                                       name="other_contents_1"
+                                                       value="{{ $page->other_contents_1 ?? '' }}"
+                                                       placeholder="We encourage students to participate in extracurricular events, pursue their personal interests, and create new clubs each school year. Lagoon is currently home to many Primary and Secondary School clubs, many of them initiated by students. These clubs and activities encourage students to take initiative and responsibility in leading activities that allow them to explore their talents and passions outside the classroom.">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="other_images_1">Image 1</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_1"
+                                                       name="other_images_1">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
+                                                    alt="Other Image"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_1) d-none @endif"
+                                                >
+                                            </div>
+
+                                            {{--                                            <textarea id="summernote" name="content"--}}
+                                            {{--                                                      class="editor-height"></textarea>--}}
+
+                                            <div class="form-group">
+                                                <label for="other_images_2">Image 2</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_2"
+                                                       name="other_images_2">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_2) /images/{{ $page->other_images_2 }} @endif"
+                                                    alt="Other Image 1"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_2) d-none @endif"
+                                                >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="other_images_3">Image 3</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_3"
+                                                       name="other_images_3">
+                                                <span class="text-info ml-3">Max size: 1MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_3) /images/{{ $page->other_images_3 }} @endif"
+                                                    alt="Other Image 2"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_3) d-none @endif"
+                                                >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="other_images_3">Image 4</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_4"
+                                                       name="other_images_4">
+                                                <span class="text-info ml-3">Max size: 1MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_4) /images/{{ $page->other_images_4 }} @endif"
+                                                    alt="Other Image 3"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_4) d-none @endif"
+                                                >
+                                            </div>
+                                        @elseif($page->slug == 'life-in-lagoon' && $page->page_category_id == 4)
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="title"
+                                                       name="other_titles_1"
+                                                       value="{{ $page->other_titles_1 ?? '' }}"
+                                                       placeholder="Image Caption">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="other_images_1">Image</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_1"
+                                                       name="other_images_1">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
+                                                    alt="Other Image"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_1) d-none @endif"
+                                                >
+                                            </div>
+
+                                            <textarea id="summernote1" name="other_contents_1"
+                                                      class="editor-height">{{$page->other_contents_1}}</textarea>
+                                        @elseif(($page->slug == 'lunch-menu'|| $page->slug == 'digital-safety') && $page->page_category_id == 6)
+{{--                                            <div class="form-group">--}}
+{{--                                                <input type="text" class="form-control" id="title"--}}
+{{--                                                       name="other_titles_1"--}}
+{{--                                                       value="{{ $page->other_titles_1 ?? '' }}"--}}
+{{--                                                       placeholder="Image Caption">--}}
+{{--                                            </div>--}}
+                                            <div class="form-group">
+                                                <label for="other_images_1">Upload PDF</label>
+                                                <input type="file" class="form-control"
+                                                       id="other_images_1"
+                                                       name="other_images_1">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+{{--                                            <div class="banner-placeholder py-3" id="banner-placeholder">--}}
+{{--                                                <img--}}
+{{--                                                    src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"--}}
+{{--                                                    alt="Other Image"--}}
+{{--                                                    style="width: 400px"--}}
+{{--                                                    class="@if(!$page->other_images_1) d-none @endif"--}}
+{{--                                                >--}}
+{{--                                            </div>--}}
+
+{{--                                            <textarea id="summernote1" name="other_contents_1"--}}
+{{--                                                      class="editor-height">{{$page->other_contents_1}}</textarea>--}}
+
                                         @else
                                             <textarea id="summernote" name="content"
                                                       class="editor-height"></textarea>

@@ -31,6 +31,7 @@ Route::prefix('/studentLife')->group(function () {
     Route::get('/lagoon-traditions', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'traditions']);
     Route::get('/student-leadership', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'leadership']);
     Route::get('/service', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'services']);
+    Route::get('/uniform', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'uniform']);
     Route::get('/club-and-activities', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'clubActivities']);
     Route::get('/mentoring-tutorials', [\App\Http\Controllers\Api\StudentLifePagesController::class, 'tutorials']);
 });
@@ -59,6 +60,7 @@ Route::get('/landing-page', [\App\Http\Controllers\Api\SiteSettingController::cl
 Route::get('/news-events', [\App\Http\Controllers\Api\SiteSettingController::class, 'newsArticles']);
 Route::get('/full-calendar', [\App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/testimonials', [\App\Http\Controllers\Api\TestimonialController::class, 'index']);
+Route::get('/course-testimonials', [\App\Http\Controllers\Api\TestimonialController::class, 'courseTestimonial']);
 Route::get('/parent-accordion', [\App\Http\Controllers\Api\NewsController::class, 'questionAndAnswer']);
 
 Route::get('/facility-index', [\App\Http\Controllers\Api\SiteSettingController::class, 'facilityIndex']);

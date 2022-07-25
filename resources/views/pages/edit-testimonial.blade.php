@@ -82,9 +82,21 @@
                                     placeholder="{{$message->commentor ?? 'Commentor\'s name'}}"
                                 >
                             </div>
+                            <div class="form-group col-md-4">
+                                <label for="Heading">Category</label>
+                                <select
+                                    id="category"
+                                    class="form-control"
+                                    name="category"
+                                    placeholder="Select Category"
+                                >
+                                    <option value="general" {{$message->category && $message->category=='general'?"selected":''}}>General</option>
+                                    <option value="courses" {{$message->category && $message->category=='courses'?"selected":''}}>Courses</option>
+                                </select>
+                            </div>
                             <div class="form-group col-md-12">
                                 <label for="summernote">Paragraph</label>
-                                <textarea style="width: 100%;" id="summernote" name="paragraph" class="editor-height" placeholder="{{$message->paragraph ?? 'Paragraph'}}"></textarea>
+                                <textarea style="width: 100%;" id="summernote" name="paragraph" class="editor-height" placeholder="{{$message->paragraph ?? 'Paragraph'}}">{{$message->paragraph ?? 'Paragraph'}}</textarea>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="form-group">
@@ -150,12 +162,14 @@
 
             var labelInputValue = $('#label').val();
             var messageId = $('#messageId').val();
+            var categoryValue = $('#category').val();
             var commentorInputValue = $('#commentor').val();
             var paragraphValue = $('#summernote').val();
 
             formData.append('label', labelInputValue);
             formData.append('id', messageId);
             formData.append('commentor', commentorInputValue);
+            formData.append('category', categoryValue);
             formData.append('paragraph', paragraphValue);
             formData.append('image', file);
             // formData.push({name:'image', value:file});

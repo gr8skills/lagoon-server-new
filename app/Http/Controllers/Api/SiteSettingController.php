@@ -76,8 +76,8 @@ class SiteSettingController extends Controller
     }
     public function coursesIndex()
     {
-        $testimonials = Testimonial::query()->inRandomOrder()->limit(2)->get(['id','commentor','paragraph']);
-        $note=$this->getContent('courses',['id','content','banner']);
+        $testimonials = Testimonial::query()->where(['category'=>'courses'])->inRandomOrder()->limit(2)->get(['id','commentor','paragraph']);
+        $note=$this->getContent('courses',['id','content','banner','other_contents_1','other_contents_2','other_contents_3','other_contents_4']);
         return $this->getResponse(['note'=>$note,'testimonials'=>$testimonials]);
     }
 

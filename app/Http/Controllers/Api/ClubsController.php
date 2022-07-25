@@ -15,6 +15,7 @@ class ClubsController extends Controller
             $clubs[$club->category][]=$club;
             return [];
         });
+        $clubs['notes']=$this->getContent('club-activities');
         return response()->json($clubs);
     }
 }

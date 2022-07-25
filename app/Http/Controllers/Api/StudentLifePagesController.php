@@ -26,6 +26,10 @@ class StudentLifePagesController extends Controller
     {
         return $this->getResponse($this->getContent('service'));
     }
+    public function uniform()
+    {
+        return $this->getResponse($this->getContent('uniform'));
+    }
 
     public function clubActivities()
     {

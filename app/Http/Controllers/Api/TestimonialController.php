@@ -17,6 +17,12 @@ class TestimonialController extends ApiBaseController
             ->get();
         return $this->showAll(collect($testimonials));
     }
+    public function courseTestimonial()
+    {
+        $testimonials = Testimonial::query()->where(['category'=>'courses'])->orderBy('id', 'desc')
+            ->get();
+        return $this->showAll(collect($testimonials));
+    }
 
     public function show($slug)
     {

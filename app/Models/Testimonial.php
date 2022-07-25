@@ -13,5 +13,6 @@ class Testimonial extends Model
         'paragraph',
         'commentor',
         'image_path',
+        'category',
     ];
 }
