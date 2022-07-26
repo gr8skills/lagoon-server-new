@@ -342,21 +342,21 @@
                                                value="{{ $page->other_titles_1 ?? '' }}" placeholder="Opus Dei">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="title" name="other_contents_1"
-                                               value="{{ $page->other_contents_1 ?? '' }}" placeholder="Opus Dei is a personal prelature of the Catholic
+                                        <textarea type="text" class="form-control" id="title" name="other_contents_1"
+                                              placeholder="Opus Dei is a personal prelature of the Catholic
                       Church founded in 1928 by St. Josemaría Escrivá.
                       At the core of Opus Dei’s mission is the teaching
                       that all men and women are called to holiness,
                       which can be pursued through our everyday lives
-                      and work.">
+                      and work.">{{ $page->other_contents_1 ?? '' }}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="title" name="other_contents_2"
-                                               value="{{ $page->other_contents_2 ?? '' }}" placeholder="Our chaplains, priests of the Prelature, celebrate
+                                        <textarea type="text" class="form-control" id="title" name="other_contents_2"
+                                                placeholder="Our chaplains, priests of the Prelature, celebrate
                     Mass in our chapel daily, and our school community
                     approaches all work in a manner reflective of the
                     spirit of Opus Dei—with dedication and
-                    cheerfulness, especially in the face of challenges.">
+                    cheerfulness, especially in the face of challenges.">{{ $page->other_contents_2 ?? '' }}</textarea>
                                     </div>
 
                                 @elseif($page->slug == 'virtual-tour' && $page->page_category_id == 1)
@@ -599,7 +599,7 @@
                                                 <input type="text" class="form-control" id="title"
                                                        name="other_contents_1"
                                                        value="{{ $page->other_contents_1 ?? '' }}"
-                                                       placeholder="Service is an integral part of the Lagoon culture. At the heart of Christian leadership is service. Our service program helps girls recognize the beauty of self-gift and the many ways they can step up to be servant- leaders. Each service component at Laggon encourages our girls to serve in ways that are best suited to their gifts and personal circumstance">
+                                                       placeholder="S   ervice is an integral part of the Lagoon culture. At the heart of Christian leadership is service. Our service program helps girls recognize the beauty of self-gift and the many ways they can step up to be servant- leaders. Each service component at Laggon encourages our girls to serve in ways that are best suited to their gifts and personal circumstance">
                                             </div>
                                             <div class="form-group">
                                                 <label for="other_images_1">Big Image</label>
