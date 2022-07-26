@@ -292,7 +292,7 @@
                                     </div>
 
                                 @elseif($page->slug == 'faith' && $page->page_category_id == 1)
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote3" name="content" class="form-control">{{ $page->content ?? '' }}</textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Image 1</label>
                                         <input type="file" accept="image/*" class="form-control" id="other_images_1"
