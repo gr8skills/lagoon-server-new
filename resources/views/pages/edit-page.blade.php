@@ -71,7 +71,7 @@
                                 <span class="alert-info">You can change the "Why Lagoon" Title to anything you want, here</span>
                             </div>
                             <label for="summernote">A short story of 'Why Lagoon' Goes here</label>
-                            <textarea id="summernote1" name="content" class="editor-height"
+                            <textarea id="summernote1" name="content" class="form-control"
                                       placeholder="A Short Story of 'Why Lagoon' goes here">{{$page->content ?? '' }}</textarea>
 
                             <div class="row form-group">
@@ -189,7 +189,7 @@
                                                value="{{ $page->other_titles_1 ?? '' }}"
                                                placeholder="WELCOME FROM THE HEAD OF SCHOOL">
                                     </div>
-                                    <textarea id="summernote1" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="form-control">{{$page->content ?? '' }}</textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Image</label>
                                         <input type="file" accept="image/*" class="form-control" id="other_images_1"
@@ -246,7 +246,7 @@
                                     <div class="form-group col-md-12">
                                         <h2>DISCOVER GREATNESS IN ORDINARY LIFE</h2>
                                         <textarea style="width: 100%" id="content3" id="summernote3" name="content"
-                                                  class="editor-height summernote">{{$page->content ?? ''}}</textarea>
+                                                  class="form-control">{{$page->content ?? ''}}</textarea>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <h2>FOSTER VIRTUES OF MIND, HEART AND CHARACTER</h2>
@@ -360,10 +360,10 @@
                                     </div>
 
                                 @elseif($page->slug == 'virtual-tour' && $page->page_category_id == 1)
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="form-control"></textarea>
                                 @elseif($page->slug == 'academic-facilities' && $page->page_category_id == 2)
                                     <label>Academic Facilities Note</label>
-                                    <textarea id="summernote" name="content" class="editor-height"></textarea>
+                                    <textarea id="summernote1" name="content" class="form-control">{{$page->content ?? '' }}</textarea>
                                 @elseif($page->slug == 'primary-school' && $page->page_category_id == 2)
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Primary Section" id="title"
@@ -376,7 +376,7 @@
                                                name="other_titles_2"
                                                value="{{ $page->other_titles_2 ?? '' }}">
                                     </div>
-                                    <textarea id="summernote1" name="content" class="editor-height">{{$page->content??''}}</textarea>
+                                    <textarea id="summernote1" name="content" class="form-control">{{$page->content??''}}</textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Video Link (please post the embed version of the video link)</label>
                                         <input type="text" class="form-control" id="content2"
@@ -398,7 +398,7 @@
                                                value="{{ $page->other_titles_1 ?? '' }}">
                                     </div>
                                     <label>Primary School Intro Note</label>
-                                    <textarea id="summernote1" name="content" class="editor-height">{{$page->content??''}}</textarea>
+                                    <textarea id="summernote1" name="content" class="form-control">{{$page->content??''}}</textarea>
                                     <div class="form-group">
                                         <label for="other_images_1">Video Link (please post the embed version of the video link)</label>
                                         <input type="text" class="form-control" id="content2"
@@ -559,8 +559,8 @@
                                                 >
                                             </div>
 
-                                            <textarea id="summernote" name="content"
-                                                      class="editor-height"></textarea>
+                                            <textarea id="summernote1" name="content"
+                                                      class="form-control">{{$page->content ?? '' }}</textarea>
 
                                             <div class="form-group">
                                                 <label for="other_images_2">Image</label>
@@ -792,8 +792,8 @@
 {{--                                                      class="editor-height">{{$page->other_contents_1}}</textarea>--}}
 
                                         @else
-                                            <textarea id="summernote" name="content"
-                                                      class="editor-height"></textarea>
+                                            <textarea id="summernote1" name="content"
+                                                      class="form-control">{{$page->content ?? '' }}</textarea>
                                         @endif
 
                                         <br>
