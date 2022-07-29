@@ -780,6 +780,22 @@
 
                                             <textarea id="summernote1" name="other_contents_1"
                                                       class="editor-height">{{$page->other_contents_1}}</textarea>
+                                        @elseif($page->slug == 'mentoring-tutorials' && $page->page_category_id == 4)
+                                            <div class="form-group">
+                                                <label for="other_images_1">Image</label>
+                                                <input type="file" accept="image/*" class="form-control"
+                                                       id="other_images_1"
+                                                       name="other_images_1">
+                                                <span class="text-info ml-3">Max size: 5MB</span>
+                                            </div>
+                                            <div class="banner-placeholder py-3" id="banner-placeholder">
+                                                <img
+                                                    src="@if(!!$page->other_images_1) /images/{{ $page->other_images_1 }} @endif"
+                                                    alt="Other Image"
+                                                    style="width: 400px"
+                                                    class="@if(!$page->other_images_1) d-none @endif"
+                                                >
+                                            </div>
                                         @elseif(($page->slug == 'lunch-menu'|| $page->slug == 'digital-safety') && $page->page_category_id == 6)
 {{--                                            <div class="form-group">--}}
 {{--                                                <input type="text" class="form-control" id="title"--}}
