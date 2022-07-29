@@ -55,7 +55,7 @@
                                     </td>
                                     <td class="text-center">{{$menu->position}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('page-edit', $menu->slug) }}" class="btn btn-sm btn-info @if($menu->completed === 1) disabled @endif">
+                                        <a href="{{ route('menu-edit', $menu->slug) }}" class="btn btn-sm btn-info @if($menu->completed === 1) disabled @endif">
                                             <i class="far fa-edit mr-1"></i>Edit</a>
                                     </td>
                                 </tr>
@@ -104,7 +104,7 @@
                                     </td>
                                     <td class="text-center">{{$menu->label}} - {{$menu->position}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('page-edit', $menu->slug) }}" class="btn btn-sm btn-info @if($menu->completed === 1) disabled @endif">
+                                        <a href="{{ route('page-edit', $menu->slug) }}" class="btn btn-sm btn-info  disabled ">
                                             <i class="far fa-edit mr-1"></i>Edit</a>
                                     </td>
                                 </tr>

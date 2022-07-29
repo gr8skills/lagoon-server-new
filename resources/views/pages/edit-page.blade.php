@@ -796,6 +796,9 @@
                                                     class="@if(!$page->other_images_1) d-none @endif"
                                                 >
                                             </div>
+                                            <label for="other_images_1">INDIVIDUALIZED MENTORING PARAGRAPH</label>
+                                            <textarea id="summernote1" name="other_contents_1"
+                                                      class="">{{$page->other_contents_1}}</textarea>
                                         @elseif(($page->slug == 'lunch-menu'|| $page->slug == 'digital-safety') && $page->page_category_id == 6)
 {{--                                            <div class="form-group">--}}
 {{--                                                <input type="text" class="form-control" id="title"--}}

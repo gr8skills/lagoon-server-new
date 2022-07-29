@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/facilities', [\App\Http\Controllers\PageController::class, 'facilities'])->name('facilities');
 
         Route::get('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'editPage'])->name('page-edit');
+        Route::get('/edit-menu/{slug}', [\App\Http\Controllers\PageController::class, 'editMenu'])->name('menu-edit');
+        Route::post('/edit-menu/{slug}', [\App\Http\Controllers\PageController::class, 'updateMenu'])->name('menu-edit');
         Route::post('/edit/{slug}', [\App\Http\Controllers\PageController::class, 'updatePage']);
         Route::delete('/delete/{slug}', [\App\Http\Controllers\PageController::class, 'deletePage'])->name('page-delete');
     });

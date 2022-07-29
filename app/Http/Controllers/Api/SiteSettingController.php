@@ -19,8 +19,15 @@ class SiteSettingController extends Controller
 {
     public function index()
     {
+        $settings=SiteSetting::firstOrCreate();
+        $menus=[];
+        MainMenu::all()->mapToGroups(function ($menu)use(&$menus){
+            $menus[$menu->slug]=$menu;
+            return [];
+        });
+        $settings->menus=$menus;
         return response()->json(
-            SiteSetting::firstOrCreate(),
+            $settings,
             200
         );
     }
@@ -85,7 +92,7 @@ class SiteSettingController extends Controller
     {
         $testimonials = Testimonial::query()->inRandomOrder()->first(['id','commentor','paragraph']);
         $images = SplashPhoto::query()->where(['category'=>'mentoring'])->get(['id','title','image_path']);
-        $note=$this->getContent('mentoring-tutorials',['id','content','banner','other_images_1']);
+        $note=$this->getContent('mentoring-tutorials',['id','content','banner','other_images_1','other_contents_1']);
         return $this->getResponse(['images'=>$images,'testimonials'=>$testimonials,'note'=>$note]);
     }
 

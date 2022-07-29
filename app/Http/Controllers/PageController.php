@@ -114,6 +114,13 @@ class PageController extends Controller
             'page' => $page
         ]);
     }
+    public function editMenu($slug)
+    {
+        $page = MainMenu::where('slug', $slug)->firstOrFail();
+        return view('pages.edit-menu')->with([
+            'page' => $page
+        ]);
+    }
 
     public function updatePage(Request $request, $slug)
     {
@@ -171,6 +178,23 @@ class PageController extends Controller
 
         $redirectPath = str_replace(' ', '-', $page->category->name);
         return redirect('/pages/' . $redirectPath)->with(['message' => 'Page updated successfully', 'type' => 'success']);
+    }
+    public function updateMenu(Request $request, $slug)
+    {
+        $page = MainMenu::where('slug', $slug)->firstOrFail();
+        if (isset($page) && !is_null($page->banner)){
+            //todo: delete previous image
+        }
+        $data = $request->all();
+//        dd($data, $page);
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('', 'images');
+        }
+        unset($request);
+
+        $page->fill($data);
+        $page->save();
+        return redirect(route('menu-submenu'));
     }
 
     //    public function deletePage($slug)
