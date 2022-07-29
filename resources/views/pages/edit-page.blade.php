@@ -675,6 +675,13 @@
                                                        placeholder="We encourage students to participate in extracurricular events, pursue their personal interests, and create new clubs each school year. Lagoon is currently home to many Primary and Secondary School clubs, many of them initiated by students. These clubs and activities encourage students to take initiative and responsibility in leading activities that allow them to explore their talents and passions outside the classroom.">
                                             </div>
                                             <div class="form-group">
+                                                <label for="other_contents_2">CLUB REGISTRATION LINK</label>
+                                                <input type="text" class="form-control" id="other_contents_2"
+                                                       name="other_contents_2"
+                                                       value="{{ $page->other_contents_2 ?? '' }}"
+                                                       placeholder="https://">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="other_images_1">Image 1</label>
                                                 <input type="file" accept="image/*" class="form-control"
                                                        id="other_images_1"

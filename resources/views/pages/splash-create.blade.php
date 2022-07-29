@@ -56,6 +56,7 @@
                                         <option value="secondary">Secondary School</option>
                                         <option value="mentoring">Mentoring</option>
                                         <option value="traditions">Traditions</option>
+{{--                                        <option value="clubs">Clubs</option>--}}
                                     </select>
                                 </div>
 
@@ -112,7 +113,7 @@
             if (!file){
                 toastAlert('Please select a file.', 'Error', 'error');
                 return;
-            } 
+            }
 
             var formData = new FormData();
             var titleInputValue = $('#title').val();
