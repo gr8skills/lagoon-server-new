@@ -390,6 +390,12 @@
 {{--                                            class="@if(!$page->other_images_1) d-none @endif"--}}
 {{--                                        >--}}
 {{--                                    </div>--}}
+                                    <div class="form-group">
+                                        <label for="other_contents_2">Footer Paragraphs</label>
+                                        <textarea type="text" class="form-control" id="title" name="other_contents_2"
+                                                  placeholder="Footer Paragraph">{{ $page->other_contents_2 ?? '' }}</textarea>
+                                    </div>
+
 
                                 @elseif($page->slug == 'secondary-school' && $page->page_category_id == 2)
                                     <div class="form-group">
@@ -484,6 +490,8 @@
                                                 class="@if(!$page->other_images_4) d-none @endif"
                                             >
                                         </div>
+
+
 
                                         @elseif($page->slug == 'academic-calendar' && $page->page_category_id == 2)
                                             <div class="form-group">

@@ -65,7 +65,7 @@ class SiteSettingController extends Controller
     public function primaryIndex()
     {
         $images = SplashPhoto::query()->where(['category'=>'primary'])->get(['id','title','image_path']);
-        $note=$this->getContent('primary-school',['id','content','content2','banner','other_images_1','other_titles_1']);
+        $note=$this->getContent('primary-school',['id','content','content2','banner','other_images_1','other_titles_1','other_contents_2']);
         return $this->getResponse(['note'=>$note,'images'=>$images]);
     }
     public function secondaryIndex()
